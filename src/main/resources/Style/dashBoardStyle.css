@@ -1,0 +1,333 @@
+.mainAnchorPane{
+    -fx-background-color: rgb(53, 151, 203);
+}
+.secAnchorPane{
+    -fx-background-color: black;
+    -fx-opacity: 1;
+}
+.manuBtn, .miniBtn, .closeBtn, .sriLogoBtn{
+    -fx-background-color: transparent;
+}
+.sriLogoBtn:hover{
+    -fx-background-color: transparent;
+}
+
+.sriLankaLogo {
+    -fx-opacity: 1.0 ;
+}
+.image-view {
+    -fx-opacity: 1.0;
+}
+.manuBtn:hover{
+    -fx-transition: opacity 0.3s;
+    -fx-opacity: 1.0;
+    -fx-border-color: white;
+    -fx-border-width: 0px 0px 0px 4px;
+    -fx-background-color: transparent;
+}
+.whiteAnchorPane{
+    -fx-background-color: #edf3f6;
+
+    
+}
+.miniAnchor{
+    -fx-background-color: white;
+}
+.searchLabel{
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.3, 0, 0);
+}
+.searchTextField{
+    -fx-text-fill: rgba(0, 0, 0, 0.83);
+    -fx-background-color: transparent;
+}
+.contAnchor{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 0);
+    -fx-opacity: 1.0;
+    -fx-background-radius: 20px;
+}
+.contAnchor:hover{
+    -fx-background-color: rgb(130, 197, 232);
+}
+.contAnchor .contAnchorText{
+    -fx-fill: black;
+}
+.contAnchor:hover .contAnchorText {
+    -fx-fill: white;
+}
+.contAnchor:hover .iconAnchor{
+    -fx-background-color: white;
+}
+.categoryAnchor{
+    -fx-background-color: rgba(47, 149, 203, 0.11);
+    -fx-background-radius: 15px;
+
+}
+.cateManuBtn ,.inciBtn{
+    -fx-background-color: transparent;
+}
+.inciBtn:hover{
+    -fx-background-color: transparent;
+    -fx-border-color: #2F95CB;
+    -fx-border-width: 0px 0px 0px 2px;
+}
+.inciBtn:hover .inciText{  // not set
+    -fx-fill: #2F95CB;
+}
+.cateManuBtn:hover{
+    -fx-background-color: transparent;
+}
+.categoryAnchor:hover{
+    -fx-border-color: #2F95CB;
+    -fx-border-width: 1px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 0);
+}
+.categoryText{
+    -fx-fill: #2F95CB;
+}
+
+.categoryBtn{
+    -fx-background-color: transpanent;
+    -fx-fill: black;
+}
+/* Adjusted CSS for JavaFX TextField */
+
+/* Default styling for the TextField */
+.TextField {
+    -fx-background-color: #edf3f6;
+
+    -fx-border-color: #2F95CB;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px 2px 2px 1px;
+    /*-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 0);*/
+
+}
+
+
+/* Hover effect on the TextField */
+.TextField:hover{
+    /*-fx-border-color: rgb(0, 0, 138);*/
+    -fx-fill: #035c83;
+}
+.TextField:hover .fieldLabel{
+    /*-fx-border-color: rgb(0, 0, 138);*/
+    -fx-fill: #035c83;
+}
+.fieldLabel{
+    -fx-text-fill: #2F95CB;
+    -fx-background-color: #edf3f6;
+
+
+}
+.changeLine{
+    -fx-background-color: #2F95CB;
+}
+.submitBtn{
+    -fx-background-color: transparent;
+}
+
+.inmateProfileBtn{
+    -fx-background-color: #2F95CB;
+    -fx-background-radius: 5px;
+}
+.deleteInmateBtn{
+    -fx-background-color: rgba(180, 17, 17, 0.86);
+    -fx-background-radius: 5px;
+
+}
+.cateSecManuBtn{
+    -fx-background-color: transparent;
+    -fx-text-fill:#0000007c ;
+}
+.cateSecManuBtn:hover{
+    -fx-background-color: transparent;
+    tansition: opacity 2s;
+    -fx-text-fill: #2F95CB;
+}
+.contAnchorViewBtn{
+    -fx-background-color:transparent;
+
+
+}
+
+.inmateProfileBtn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #2F95CB;
+    -fx-border-color: #2F95CB;
+    -fx-border-width: 1px ;
+    -fx-border-radius: 5px ;
+}
+.deleteInmateBtn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-text-fill: rgba(180, 17, 17, 0.86);
+    -fx-border-color: rgba(180, 17, 17, 0.86);
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+/*/////////////////////      Inmate Profile       /////////////////////*/
+
+.editProfileBtn{
+    -fx-background-color: transpanent;
+    -fx-background-radius: 15px;
+    -fx-border-color: rgba(0, 0, 0, 0.71);
+    -fx-border-radius: 15px;
+    -fx-text-fill: rgba(0, 0, 0, 0.71);
+}
+.profileManuBtn{
+    -fx-background-color: transpanent;
+}
+.profileManuBtn:hover{
+    -fx-border-color: #007bff;
+    -fx-border-width: 0px 3px 0px 0px;
+    -fx-text-fill: #007bff;
+
+}
+.inmateDeleteBtn{
+    -fx-background-color: rgb(211, 48, 48);
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+}
+.inmateDeleteBtn:hover{
+    -fx-background-color: transpanent;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: rgb(211, 48, 48);
+    -fx-border-color: rgb(211, 48, 48);
+}
+
+.tableView {
+    -fx-background-color: rgba(53, 151, 203, 0.53);
+}
+.tableView.column-header {
+    -fx-text: white;
+}
+/*.tableView.table-row-cell:odd {*/
+/*    -fx-background-color: #e0e0e0;*/
+/*}*/
+.tableView.table-row-cell:selected {
+    -fx-background-color: #6495ED;
+    -fx-text-fill: white;
+}
+
+
+.tableViewOfficerView {
+    -fx-background-color: rgba(53, 151, 203, 0.53);
+}
+
+.tableViewOfficerView.column-header {
+    -fx-text-fill: white;
+}
+.tableViewOfficerView.table-row-cell:odd {
+    -fx-background-color: #e0e0e0;
+}
+.tableViewOfficerView.table-row-cell:selected {
+    -fx-background-color: #6495ED;
+    -fx-text-fill: white;
+}
+
+/*dashBoard*/
+
+.dashAddText{
+    -fx-fill: #2F95CB;
+}
+.dashContAnchor{
+    -fx-background-color: rgba(88, 180, 229, 0.71);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 0);
+    -fx-opacity: 1.0;
+    -fx-background-radius: 20px;
+}
+/*pie Chart - inmate*/
+
+.pieChartInmate{
+    -fx-background-color: transpanent;
+}
+.pieChartInmate:hover{
+
+}
+/*.pieChartInmate .chart-pie {*/
+/*    -fx-pie-background: #ffffff; !* Pie background color *!*/
+/*    -fx-border-color: #cccccc; !* Border color *!*/
+/*    -fx-border-width: 2px; !* Border width *!*/
+/*}*/
+.pieChartInmate .chart-pie .chart-pie-area {
+    -fx-fill: #3597cb; /* Change slice color to orange */
+}
+
+
+/*  user Page*/
+
+.miniAnchorSettingPage{
+    -fx-background-color: white;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 0);
+}
+.upBackGroundImage{
+    -fx-border-radius: 10%;
+    -fx-background-radius: 10%;
+    -fx-background-color: black;
+}
+.imageStage{
+    -fx-background-color: white;
+    -fx-background-radius: 180px;
+    -fx-border-radius: 180px;
+}
+.demoReg{
+    -fx-background-color: white;
+    -fx-background-radius: 100px;
+}
+.profilePicEditBtn{
+    -fx-background-color: transparent;
+    -fx-border-color: #3597cb;
+    -fx-border-radius: 10px;
+}
+.centerAnchor{
+    -fx-background-color: transparent;
+    -fx-border-color: #3597cb;
+    -fx-border-radius: 10px;
+}
+.centerDemoReg{
+    -fx-background-color: #3597cb;
+    -fx-background-radius: 100px;
+}
+.UserTextField{
+
+        -fx-background-color: white;
+        -fx-border-color: #2F95CB;
+        -fx-border-radius: 5px;
+        -fx-border-width: 1px 1px 1px 1px;
+
+}
+.UserFieldLabel{
+    -fx-text-fill: #2F95CB;
+    -fx-background-color: white;
+}
+.UserSaveBtn, .UserSendOPTBtn{
+    -fx-background-color: #2F95CB;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+}
+.UserSaveBtn:hover{
+    -fx-background-color: transpanent;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: #2F95CB;
+    -fx-border-color: #2F95CB;
+}
+.reportVBox{
+    -fx-background-color: transpanent;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+.uReportMainAnchor{
+    -fx-background-color: transpanent;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
