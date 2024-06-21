@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="518.0" prefWidth="854.0" styleClass="mainAnchor" stylesheets="@../css/WelcomeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse69.javafx.Controllers.WelcomeController">
+<AnchorPane prefHeight="518.0" prefWidth="854.0" styleClass="mainAnchor" stylesheets="@../css/WelcomeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.WelcomeController">
    <TextField fx:id="uNameField" layoutX="525.0" layoutY="213.0" onAction="#uNameOnAction" promptText="Your User Id" styleClass="uNameField" />
    <PasswordField fx:id="uPassField" layoutX="527.0" layoutY="306.0" onAction="#passwordOnAction" promptText="Your Password" styleClass="uPassField" stylesheets="@../css/WelcomeStyle.css" />
    <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="588.0" layoutY="414.0" onAction="#signInBtn" prefHeight="33.0" prefWidth="106.0" styleClass="signInBtn" stylesheets="@../css/WelcomeStyle.css" text="SIGN IN" textFill="WHITE" textOverrun="CLIP">

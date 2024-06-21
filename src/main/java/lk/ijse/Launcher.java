@@ -54,7 +54,7 @@ public class Launcher extends Application {
 
     private StackPane setStartVideo() {
         // Load the video file
-        String videoPath = "src/main/resources/Videos/Prison.mp4";
+        String videoPath = "src/main/resources/Video/Prison.mp4";
         Media media = new Media(new File(videoPath).toURI().toString());
         // Create a MediaPlayer
         MediaPlayer mediaPlayer = new MediaPlayer(media);

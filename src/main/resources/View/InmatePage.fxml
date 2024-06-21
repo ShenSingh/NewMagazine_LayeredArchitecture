@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="@../css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse69.javafx.Controllers.InmatePageController">
+<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="@../css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.InmatePageController">
    <children>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="12.0" layoutY="103.0">
          <image>
@@ -110,25 +110,6 @@
                      </image>
                   </ImageView>
                   <Button fx:id="updateInmate" layoutX="5.0" layoutY="8.0" mnemonicParsing="false" onAction="#onUpdateInmateBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../css/dashBoardStyle.css">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="34.0" layoutY="323.0" prefHeight="70.0" prefWidth="150.0" styleClass="categoryAnchor">
-               <children>
-                  <Text fill="#000000c4" layoutX="70.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categoryText" text="View Inmate" wrappingWidth="62.5341796875">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Text>
-                  <ImageView fitHeight="44.0" fitWidth="42.0" layoutX="6.0" layoutY="15.0">
-                     <image>
-                        <Image url="@../images/icon/viewIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Button layoutX="4.0" layoutY="11.0" mnemonicParsing="false" onAction="#onViewInmateBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../css/dashBoardStyle.css">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -292,19 +273,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="settingBtn" layoutX="-2.0" layoutY="387.0" mnemonicParsing="false" onAction="#onSetting" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="28.0" fitWidth="28.0">
-               <image>
-                  <Image url="@../images/icon/setting.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="-2.0" layoutY="456.0" mnemonicParsing="false" onAction="#onLogOut" prefHeight="28.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button layoutX="-2.0" layoutY="392.0" mnemonicParsing="false" onAction="#onLogOut" prefHeight="28.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
