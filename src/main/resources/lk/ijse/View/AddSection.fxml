@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="@../css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AddSectionController">
+<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AddSectionController">
    <children>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="12.0" layoutY="103.0">
          <image>
@@ -43,7 +43,7 @@
                   <Font size="10.0" />
                </font>
             </Text>
-            <AnchorPane layoutX="34.0" layoutY="72.0" prefHeight="70.0" prefWidth="150.0" styleClass="categoryAnchor" stylesheets="@../css/dashBoardStyle.css">
+            <AnchorPane layoutX="34.0" layoutY="72.0" prefHeight="70.0" prefWidth="150.0" styleClass="categoryAnchor" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
                <children>
                   <Text fill="#000000c4" layoutX="72.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categoryText" text="Add Section" wrappingWidth="55.0">
                      <font>
@@ -60,7 +60,7 @@
                         <Image url="@../images/icon/add.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="8.0" layoutY="7.0" mnemonicParsing="false" onAction="#onAddSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../css/dashBoardStyle.css">
+                  <Button layoutX="8.0" layoutY="7.0" mnemonicParsing="false" onAction="#onAddSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -74,7 +74,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Text>
-                  <Button layoutX="5.0" layoutY="7.0" mnemonicParsing="false" onAction="#onDeleteSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../css/dashBoardStyle.css">
+                  <Button layoutX="5.0" layoutY="7.0" mnemonicParsing="false" onAction="#onDeleteSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -98,7 +98,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Text>
-                  <Button layoutX="5.0" layoutY="7.0" mnemonicParsing="false" onAction="#onUpdateSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../css/dashBoardStyle.css">
+                  <Button layoutX="5.0" layoutY="7.0" mnemonicParsing="false" onAction="#onUpdateSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -128,12 +128,12 @@
             <TextField fx:id="searchSection" layoutX="32.0" layoutY="2.0" onAction="#searchSectionField" prefHeight="26.0" prefWidth="599.0" promptText="Search Id" styleClass="searchTextField" />
          </children>
       </AnchorPane>
-      <Button layoutX="-1.0" layoutY="101.0" mnemonicParsing="false" onAction="#onInmate" prefHeight="47.0" prefWidth="63.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button layoutX="-1.0" layoutY="101.0" mnemonicParsing="false" onAction="#onInmate" prefHeight="47.0" prefWidth="63.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="visitorBtn" layoutX="-2.0" layoutY="208.0" mnemonicParsing="false" onAction="#onVisitor" prefHeight="53.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button fx:id="visitorBtn" layoutX="-2.0" layoutY="208.0" mnemonicParsing="false" onAction="#onVisitor" prefHeight="53.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -145,7 +145,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="sectionBtn" layoutX="-2.0" layoutY="271.0" mnemonicParsing="false" onAction="#onSection" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button fx:id="sectionBtn" layoutX="-2.0" layoutY="271.0" mnemonicParsing="false" onAction="#onSection" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -157,7 +157,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="manyBtn" layoutX="-2.0" layoutY="329.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button fx:id="manyBtn" layoutX="-2.0" layoutY="329.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <onAction>#onMany</onAction>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -170,7 +170,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="-2.0" layoutY="389.0" mnemonicParsing="false" onAction="#onLogOut" prefHeight="28.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button layoutX="-2.0" layoutY="389.0" mnemonicParsing="false" onAction="#onLogOut" prefHeight="28.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -182,7 +182,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="officerBtn" layoutX="-2.0" layoutY="147.0" mnemonicParsing="false" onAction="#onOfficer" prefHeight="53.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button fx:id="officerBtn" layoutX="-2.0" layoutY="147.0" mnemonicParsing="false" onAction="#onOfficer" prefHeight="53.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -194,7 +194,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="inmateBtn" layoutX="-2.0" layoutY="88.0" mnemonicParsing="false" onAction="#onInmate" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button fx:id="inmateBtn" layoutX="-2.0" layoutY="88.0" mnemonicParsing="false" onAction="#onInmate" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -206,7 +206,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="dashBoardBtn" layoutY="25.0" mnemonicParsing="false" onAction="#onDashBord" prefHeight="47.0" prefWidth="50.0" styleClass="sriLogoBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button fx:id="dashBoardBtn" layoutY="25.0" mnemonicParsing="false" onAction="#onDashBord" prefHeight="47.0" prefWidth="50.0" styleClass="sriLogoBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -218,7 +218,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="1209.0" mnemonicParsing="false" onAction="#systemCloseBtn" prefHeight="24.0" prefWidth="4.0" styleClass="closeBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button layoutX="1209.0" mnemonicParsing="false" onAction="#systemCloseBtn" prefHeight="24.0" prefWidth="4.0" styleClass="closeBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -230,7 +230,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="1184.0" layoutY="1.0" mnemonicParsing="false" onAction="#miniHideBtn" prefHeight="15.0" prefWidth="20.0" styleClass="miniBtn" stylesheets="@../css/dashBoardStyle.css">
+      <Button layoutX="1184.0" layoutY="1.0" mnemonicParsing="false" onAction="#miniHideBtn" prefHeight="15.0" prefWidth="20.0" styleClass="miniBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -243,36 +243,36 @@
          </graphic>
       </Button>
       <JFXClippedPane />
-      <TextField fx:id="sectionId" layoutX="372.0" layoutY="242.0" prefHeight="27.0" prefWidth="215.0" styleClass="TextField" stylesheets="@../css/dashBoardStyle.css" />
-      <Label layoutX="385.0" layoutY="235.0" styleClass="fieldLabel" stylesheets="@../css/dashBoardStyle.css" text="Section Id">
+      <TextField fx:id="sectionId" layoutX="372.0" layoutY="242.0" prefHeight="27.0" prefWidth="215.0" styleClass="TextField" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" />
+      <Label layoutX="385.0" layoutY="235.0" styleClass="fieldLabel" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" text="Section Id">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <TextField fx:id="sectionName" layoutX="708.0" layoutY="242.0" onAction="#secNameOnAction" prefHeight="27.0" prefWidth="215.0" styleClass="TextField" stylesheets="@../css/dashBoardStyle.css" />
-      <Label layoutX="721.0" layoutY="235.0" styleClass="fieldLabel" stylesheets="@../css/dashBoardStyle.css" text="Section Name">
+      <TextField fx:id="sectionName" layoutX="708.0" layoutY="242.0" onAction="#secNameOnAction" prefHeight="27.0" prefWidth="215.0" styleClass="TextField" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" />
+      <Label layoutX="721.0" layoutY="235.0" styleClass="fieldLabel" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" text="Section Name">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <TextField fx:id="location" layoutX="372.0" layoutY="341.0" onAction="#locationOnAction" prefHeight="27.0" prefWidth="215.0" styleClass="TextField" stylesheets="@../css/dashBoardStyle.css" />
-      <Label layoutX="385.0" layoutY="335.0" styleClass="fieldLabel" stylesheets="@../css/dashBoardStyle.css" text="Location">
+      <TextField fx:id="location" layoutX="372.0" layoutY="341.0" onAction="#locationOnAction" prefHeight="27.0" prefWidth="215.0" styleClass="TextField" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" />
+      <Label layoutX="385.0" layoutY="335.0" styleClass="fieldLabel" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" text="Location">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <TextField fx:id="capacity" layoutX="708.0" layoutY="341.0" onAction="#capacityOnAction" prefHeight="27.0" prefWidth="215.0" styleClass="TextField" stylesheets="@../css/dashBoardStyle.css" />
-      <Label layoutX="721.0" layoutY="335.0" styleClass="fieldLabel" stylesheets="@../css/dashBoardStyle.css" text="Capacity">
+      <TextField fx:id="capacity" layoutX="708.0" layoutY="341.0" onAction="#capacityOnAction" prefHeight="27.0" prefWidth="215.0" styleClass="TextField" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" />
+      <Label layoutX="721.0" layoutY="335.0" styleClass="fieldLabel" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" text="Capacity">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label layoutX="386.0" layoutY="431.0" styleClass="fieldLabel" stylesheets="@../css/dashBoardStyle.css" text="Security Level">
+      <Label layoutX="386.0" layoutY="431.0" styleClass="fieldLabel" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" text="Security Level">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label layoutX="723.0" layoutY="431.0" styleClass="fieldLabel" stylesheets="@../css/dashBoardStyle.css" text="Status">
+      <Label layoutX="723.0" layoutY="431.0" styleClass="fieldLabel" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" text="Status">
          <font>
             <Font size="10.0" />
          </font>
@@ -282,7 +282,7 @@
             <Font name="Kinnari Bold" size="18.0" />
          </font>
       </JFXButton>
-      <Button layoutX="684.0" layoutY="561.0" mnemonicParsing="false" onAction="#submitBtn" prefHeight="30.0" prefWidth="100.0" styleClass="submitBtn" stylesheets="@../css/dashBoardStyle.css" text="Submit">
+      <Button layoutX="684.0" layoutY="561.0" mnemonicParsing="false" onAction="#submitBtn" prefHeight="30.0" prefWidth="100.0" styleClass="submitBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" text="Submit">
          <font>
             <Font name="Kinnari Bold" size="18.0" />
          </font>
