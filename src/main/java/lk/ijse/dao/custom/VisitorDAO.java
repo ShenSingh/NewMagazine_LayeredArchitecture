@@ -1,4 +1,7 @@
 package lk.ijse.dao.custom;
 
-public interface VisitorDAO {
+import lk.ijse.Entity.Visitor;
+import lk.ijse.dao.CrudDvo;
+
+public interface VisitorDAO extends CrudDvo<Visitor> {
 }

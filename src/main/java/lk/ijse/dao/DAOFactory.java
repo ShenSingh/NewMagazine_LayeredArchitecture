@@ -3,6 +3,8 @@ package lk.ijse.dao;
 
 //factory design pattern
 
+import lk.ijse.dao.custom.impl.*;
+
 public class DAOFactory {
 
     private static DAOFactory daoFactory;
@@ -21,20 +23,27 @@ public class DAOFactory {
 
     public SuperDao getDAO(DAOTypes daoTypes){
         switch (daoTypes){
-            case CUSTOMER:
-                return new CustomerDAOImpl();
+            case EXPENCES:
+                return new ExpencesDAOImpl();
 
-            case ITEM:
-                return new ItemDAOImpl();
+            case INMATE:
+                return new InmateDAOImpl();
 
-            case ORDER:
-                return new OrderDAOImpl();
+            case INMATE_RECORD:
+                return new InmateRecordDAOImpl();
 
-            case ORDER_DETAIL:
-                return new OrderDetailDAOImpl();
-
+            case OFFICER:
+                return new OfficerDAOImpl();
+            case SECTION:
+                return new SectionDAOImpl();
+            case USER:
+                return new UserDAOImpl();
+            case VISITOR:
+                return new VisitorDAOImpl();
+            case VISITOR_RECORD:
+                return new VisitorRecordDAOImpl();
             case QUERY:
-                return new QueryDaoImpl();
+                return new QueryDAOImpl();
             default:
                 return null;
         }

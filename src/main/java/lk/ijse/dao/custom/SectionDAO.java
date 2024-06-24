@@ -1,4 +1,7 @@
 package lk.ijse.dao.custom;
 
-public interface SectionDAO {
+import lk.ijse.Entity.Section;
+import lk.ijse.dao.CrudDvo;
+
+public interface SectionDAO extends CrudDvo<Section> {
 }
