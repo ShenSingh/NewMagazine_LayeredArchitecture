@@ -9,7 +9,7 @@ public class DbConnection {
     private Connection connection;
 
     private DbConnection() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/New_Magazine_Prison", "root", "Ijse@123");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/New_Magazine_LA", "root", "Ijse@123");
     }
 
     public static DbConnection getInstance() throws SQLException {
@@ -24,7 +24,7 @@ public class DbConnection {
             return connection;
         } else {
             System.out.println("connection Closed!");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/New_Magazine_Prison", "root", "Ijse@123");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/New_Magazine_LA", "root", "Ijse@123");
         }
         return connection;
     }
