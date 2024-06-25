@@ -18,4 +18,6 @@ public class Inmate {
     private String inmateAddress;
     private String status;
     private byte[] inmateImage;
+
+
 }

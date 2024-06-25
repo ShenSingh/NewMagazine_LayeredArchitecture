@@ -14,9 +14,9 @@ public class Visitor {
     private String visitorLastName;
     private Date visitorDOB;
     private String visitorNIC;
-    private Integer visitorNumber;
+    private String gender;
+    private int visitorNumber;
     private String visitorAddress;
     private String visitorType;
-    private String gender;
     private byte[] visitorImage;
 }
