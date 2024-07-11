@@ -1,5 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
+import lk.ijse.Controller.Util.jbcrypt.PasswordHasher;
 import lk.ijse.Entity.User;
 import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.UserDAO;
@@ -9,6 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDAOImpl implements UserDAO {
+
+    PasswordHasher passwordHasher = new PasswordHasher();
+
     @Override
     public ArrayList<User> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.executeQuery("SELECT * FROM User");
@@ -67,6 +71,12 @@ public class UserDAOImpl implements UserDAO {
         return SQLUtil.executeQuery("DELETE FROM User WHERE uId=?", id);
     }
 
+    @Override
+    public String generateNewId() throws SQLException, ClassNotFoundException {
+
+        return null;
+    }
+
 //    @Override
 //    public String generateNewId() throws SQLException, ClassNotFoundException {
 //        return null;
@@ -94,5 +104,15 @@ public class UserDAOImpl implements UserDAO {
     public boolean exist(String id) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.executeQuery("SELECT uId FROM User WHERE uId=?", id);
         return rst.next();
+    }
+
+    @Override
+    public boolean checkValid(String uId, String password) throws Exception {
+        ResultSet rst = SQLUtil.executeQuery("SELECT uPassword FROM User WHERE uName=?", uId);
+
+        if (rst.next()) {
+            return passwordHasher.checkPassword(password, rst.getString(4));
+        }
+        return false;
     }
 }

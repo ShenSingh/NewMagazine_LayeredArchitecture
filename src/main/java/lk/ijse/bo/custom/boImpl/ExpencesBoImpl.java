@@ -1,5 +1,6 @@
 package lk.ijse.bo.custom.boImpl;
 
+import javafx.scene.chart.XYChart;
 import lk.ijse.Entity.Expences;
 import lk.ijse.Model.ExpencesDTO;
 import lk.ijse.bo.custom.ExpencesBO;
@@ -8,6 +9,7 @@ import lk.ijse.dao.custom.ExpencesDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ExpencesBoImpl implements ExpencesBO {
 
@@ -40,7 +42,22 @@ public class ExpencesBoImpl implements ExpencesBO {
     }
 
     @Override
+    public String generateNewCustomerId() throws SQLException, ClassNotFoundException {
+        return expencesDAO.generateNewId();
+    }
+
+    @Override
     public boolean existExpences(String id) throws SQLException, ClassNotFoundException {
         return expencesDAO.exist(id);
+    }
+
+    @Override
+    public Map<String, Double> getTotalCostByType() throws SQLException, ClassNotFoundException {
+        return expencesDAO.getTotalCostByType();
+    }
+
+    @Override
+    public Map<String, XYChart.Series<String, Number>> getExpensesDataForLineChart() throws SQLException, ClassNotFoundException {
+        return expencesDAO.getExpensesDataForLineChart();
     }
 }

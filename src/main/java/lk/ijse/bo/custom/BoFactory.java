@@ -12,8 +12,9 @@ public class BoFactory {
     public static BoFactory getInstance() {
         return (boFactory == null) ? boFactory = new BoFactory() : boFactory;
     }
+
     public enum BoTypes {
-        EXPENCES,INMATE,INMATE_RECORD,OFFICER,SECTION,USER,VISITOR,VISITOR_RECORD,QUERY
+        EXPENCES,INMATE,INMATE_RECORD,OFFICER,SECTION,USER,VISITOR,VISITOR_RECORD,QUERY, SET_FIRST_INMATE_RECORD, SET_FIRST_VISITOR_RECORD
     }
 
     public <T> T getBo(BoTypes boType) {
@@ -36,6 +37,10 @@ public class BoFactory {
                 return (T) new VisitorRecordBoImpl();
             case QUERY:
                 return (T) new QueryBoImpl();
+            case SET_FIRST_INMATE_RECORD:
+                return (T) new SetFirstInmateRecordBoImpl();
+            case SET_FIRST_VISITOR_RECORD:
+                return (T) new SetFirstVisitorRecordBoImpl();
             default:
                 return null;
         }

@@ -1,6 +1,7 @@
 package lk.ijse.dao.custom.impl;
 
 import lk.ijse.Entity.Inmate;
+import lk.ijse.Model.InmateDTO;
 import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.InmateDAO;
 
@@ -64,6 +65,11 @@ public class InmateDAOImpl implements InmateDAO {
         return SQLUtil.executeQuery("DELETE FROM Inmate WHERE inmateId=?",id);
     }
 
+    @Override
+    public String generateNewId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 //    @Override
 //    public String generateNewId() throws SQLException, ClassNotFoundException {
 //        return null;
@@ -90,5 +96,36 @@ public class InmateDAOImpl implements InmateDAO {
     public boolean exist(String id) throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.executeQuery("SELECT inmateId FROM Inmate WHERE inmateId=?",id);
         return resultSet.next();
+    }
+
+    @Override
+    public ArrayList<InmateDTO> getInmatesByGender(String genderType) throws Exception {
+
+        ArrayList<Inmate> allInmate = getAll();
+        ArrayList<InmateDTO> allInmates = new ArrayList<>();
+
+        for (Inmate inmate : allInmate) {
+
+            if (!inmate.getGender().equals(genderType)){
+                continue;
+            }
+            allInmates.add(new InmateDTO(inmate.getInmateId(),inmate.getInmateFirstName(),inmate.getInmateLastName(),inmate.getInmateDOB(),inmate.getInmateNIC(),inmate.getGender(),inmate.getInmateAddress(),inmate.getStatus(),inmate.getInmateImage()));
+        }
+        return allInmates;
+    }
+
+    @Override
+    public ArrayList<InmateDTO> getActiveInmates() throws SQLException, ClassNotFoundException {
+        ArrayList<Inmate> allInmate = getAll();
+        ArrayList<InmateDTO> allInmates = new ArrayList<>();
+
+        for (Inmate inmate : allInmate) {
+
+            if (!inmate.getStatus().equals("Active")){
+                continue;
+            }
+            allInmates.add(new InmateDTO(inmate.getInmateId(),inmate.getInmateFirstName(),inmate.getInmateLastName(),inmate.getInmateDOB(),inmate.getInmateNIC(),inmate.getGender(),inmate.getInmateAddress(),inmate.getStatus(),inmate.getInmateImage()));
+        }
+        return allInmates;
     }
 }

@@ -1,13 +1,16 @@
 package lk.ijse.bo.custom.boImpl;
 
+import lk.ijse.Entity.Inmate;
 import lk.ijse.Entity.InmateRecord;
 import lk.ijse.Model.InmateRecordDTO;
 import lk.ijse.bo.custom.InmateRecordBO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.InmateRecordDAO;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class InmateRecordBoImpl implements InmateRecordBO {
 
@@ -43,4 +46,19 @@ public class InmateRecordBoImpl implements InmateRecordBO {
     public boolean existInmateRecord(String id) throws SQLException, ClassNotFoundException {
         return inmateRecordDAO.exist(id);
     }
+
+    @Override
+    public ArrayList<InmateRecordDTO> getRecords(String inmateId) throws SQLException, ClassNotFoundException {
+        ArrayList<InmateRecordDTO> records = this.getAllInmateRecord();
+        ArrayList<InmateRecordDTO> inmateRecords = new ArrayList<>();
+
+        for (InmateRecordDTO record : records) {
+            if (record.getInmateId().equals(inmateId)) {
+                inmateRecords.add(record);
+            }
+        }
+        return inmateRecords;
+    }
+
+
 }

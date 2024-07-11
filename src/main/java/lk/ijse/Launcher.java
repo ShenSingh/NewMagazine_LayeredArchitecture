@@ -38,7 +38,7 @@ public class Launcher extends Application {
         signstage.setScene(scene);
         try {
             // Load FXML file
-            Parent rootNode = FXMLLoader.load(getClass().getResource("/View/Welcome.fxml"));
+            Parent rootNode = FXMLLoader.load(getClass().getResource("/lk/ijse/View/Welcome.fxml"));
             Scene signInScene = new Scene(rootNode);
             int displayDurationMillis = 5000;// 1s
             PauseTransition delay = new PauseTransition(Duration.millis(displayDurationMillis));
@@ -54,7 +54,7 @@ public class Launcher extends Application {
 
     private StackPane setStartVideo() {
         // Load the video file
-        String videoPath = "src/main/resources/Video/Prison.mp4";
+        String videoPath = "src/main/resources/lk/ijse/Video/Prison.mp4";
         Media media = new Media(new File(videoPath).toURI().toString());
         // Create a MediaPlayer
         MediaPlayer mediaPlayer = new MediaPlayer(media);

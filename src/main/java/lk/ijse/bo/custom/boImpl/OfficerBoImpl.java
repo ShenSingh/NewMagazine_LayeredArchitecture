@@ -44,4 +44,10 @@ public class OfficerBoImpl implements OfficerBO {
     public boolean existOfficer(String id) throws SQLException, ClassNotFoundException {
         return officerDAO.exist(id);
     }
+
+    @Override
+    public OfficerDTO searchOfficer(String searchOfficerId) throws SQLException, ClassNotFoundException {
+        Officer officer = officerDAO.search(searchOfficerId);
+        return new OfficerDTO(officer.getOfficerId(), officer.getOfficerFirstName(), officer.getOfficerLastName(), officer.getOfficerDOB(), officer.getOfficerNIC(), officer.getGender(), officer.getOfficerAddress(), officer.getOfficerEmail(), officer.getOfficerNumber(), officer.getPosition(), officer.getSectionId(),officer.getSalary());
+    }
 }

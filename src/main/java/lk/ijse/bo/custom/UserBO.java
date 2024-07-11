@@ -17,4 +17,7 @@ public interface UserBO extends SuperBo{
     //String generateNewCustomerId()throws SQLException, ClassNotFoundException;;
 
     boolean existUser(String id) throws SQLException, ClassNotFoundException;
+
+    boolean checkValid(String uId, String password) throws Exception;
+
 }

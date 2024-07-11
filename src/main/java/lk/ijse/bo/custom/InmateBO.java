@@ -4,6 +4,7 @@ import lk.ijse.Model.InmateDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public interface InmateBO extends SuperBo{
     ArrayList<InmateDTO> getAllInmate() throws SQLException, ClassNotFoundException;
@@ -17,4 +18,12 @@ public interface InmateBO extends SuperBo{
     //String generateNewCustomerId()throws SQLException, ClassNotFoundException;;
 
     boolean existInmate(String id) throws SQLException, ClassNotFoundException;
+
+    InmateDTO searchInmate(String id) throws SQLException, ClassNotFoundException;
+
+    ArrayList<InmateDTO> getInmatesByGender(String genderType) throws Exception;
+
+    ArrayList<InmateDTO> getActiveInmates() throws SQLException, ClassNotFoundException;
+
+
 }

@@ -15,38 +15,38 @@ public class MainDashBoard implements MainDashBoardInterFace{
 
     @Override
     public void onInmate() throws IOException {
-        this.createStage("/View/InmatePage.fxml");
+        this.createStage("/lk/ijse/View/InmatePage.fxml");
 
     }
 
     @Override
     public void onOfficer() throws IOException {
-        createStage("/View/OfficerPage.fxml");
+        createStage("/lk/ijse/View/OfficerPage.fxml");
 
     }
 
     @Override
     public void onVisitor() throws IOException {
-        createStage("/View/VisitorPage.fxml");
+        createStage("/lk/ijse/View/VisitorPage.fxml");
 
     }
 
     @Override
     public void onSection() throws IOException {
 
-        createStage("/View/SectionPage.fxml");
+        createStage("/lk/ijse/View/SectionPage.fxml");
     }
 
     @Override
     public void onMany() throws IOException {
 
-        createStage("/View/financialPage.fxml");
+        createStage("/lk/ijse/View/financialPage.fxml");
     }
 
     @Override
     public void onDashBord() throws IOException {
         Stage stage = WelcomeController.getDashBoardStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/View/DashBoard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/lk/ijse/View/DashBoard.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
@@ -63,7 +63,7 @@ public class MainDashBoard implements MainDashBoardInterFace{
         stage.setScene(videoScene);
         try {
             // Load FXML file
-            Parent rootNode = FXMLLoader.load(getClass().getResource("/View/Welcome.fxml"));
+            Parent rootNode = FXMLLoader.load(getClass().getResource("/lk/ijse/View/Welcome.fxml"));
             Scene signInScene = new Scene(rootNode);
             int displayDurationMillis = 3000;// 1s
             PauseTransition delay = new PauseTransition(Duration.millis(displayDurationMillis));
@@ -89,61 +89,61 @@ public class MainDashBoard implements MainDashBoardInterFace{
     @Override
     public void onAddInmateBtn() throws IOException {
 
-        createStage("/View/AddInmate.fxml");
+        createStage("/lk/ijse/View/AddInmate.fxml");
     }
 
     @Override
     public void onDeleteInmateBtn() throws IOException {
-        createStage("/View/InmateProfile.fxml");
+        createStage("/lk/ijse/View/InmateProfile.fxml");
 
     }
 
     @Override
     public void onUpdateInmateBtn() throws IOException {
-        createStage("/View/InmateProfile.fxml");
+        createStage("/lk/ijse/View/InmateProfile.fxml");
     }
 
     @Override
     public void onViewInmateBtn() throws IOException {
-        createStage("/View/ViewInmate.fxml");
+        createStage("/lk/ijse/View/ViewInmate.fxml");
     }
 
     @Override
     public void inmateProfileBtn() throws IOException {
-        createStage("/View/InmateProfile.fxml");
+        createStage("/lk/ijse/View/InmateProfile.fxml");
     }
 
     @Override
     public void addRecordBtn() throws IOException {
-        createStage("/View/AddRecord.fxml");
+        createStage("/lk/ijse/View/AddRecord.fxml");
     }
 
 
 //    officer method //
     @Override
     public void onAddOfficerBtn() throws IOException {
-        createStage("/View/AddOfficer.fxml");
+        createStage("/lk/ijse/View/AddOfficer.fxml");
     }
 
     @Override
     public void onDeleteOfficerBtn() throws IOException {
-        createStage("/View/OfficerProfile.fxml");
+        createStage("/lk/ijse/View/OfficerProfile.fxml");
 
     }
 
     @Override
     public void onUpdateOfficerBtn() throws IOException {
-        createStage("/View/OfficerProfile.fxml");
+        createStage("/lk/ijse/View/OfficerProfile.fxml");
     }
 
     @Override
     public void onViewOfficerBtn() throws IOException {
-        createStage("/View/ViewOfficer.fxml");
+        createStage("/lk/ijse/View/ViewOfficer.fxml");
     }
 
     @Override
     public void officerProfileBtn() throws IOException {
-        createStage("/View/OfficerProfile.fxml");
+        createStage("/lk/ijse/View/OfficerProfile.fxml");
     }
 
 
@@ -151,28 +151,28 @@ public class MainDashBoard implements MainDashBoardInterFace{
 
     @Override
     public void onAddSectionBtn() throws IOException {
-        createStage("/View/AddSection.fxml");
+        createStage("/lk/ijse/View/AddSection.fxml");
     }
 
     @Override
     public void onDeleteSectionBtn() throws IOException {
-        createStage("/View/SectionProfile.fxml");
+        createStage("/lk/ijse/View/SectionProfile.fxml");
 
     }
 
     @Override
     public void onUpdateSectionBtn() throws IOException {
-        createStage("/View/SectionProfile.fxml");
+        createStage("/lk/ijse/View/SectionProfile.fxml");
     }
 
     @Override
     public void onViewSectionBtn() throws IOException {
-        createStage("/View/ViewSection.fxml");
+        createStage("/lk/ijse/View/ViewSection.fxml");
     }
 
     @Override
     public void sectionProfileBtn() throws IOException {
-        createStage("/View/SectionProfile.fxml");
+        createStage("/lk/ijse/View/SectionProfile.fxml");
 
     }
 
@@ -180,28 +180,28 @@ public class MainDashBoard implements MainDashBoardInterFace{
 
     @Override
     public void onAddVisitorBtn() throws IOException {
-        createStage("/View/AddVisitor.fxml");
+        createStage("/lk/ijse/View/AddVisitor.fxml");
     }
 
     @Override
     public void onDeleteVisitorBtn() throws IOException {
-        createStage("/View/VisitorProfile.fxml");
+        createStage("/lk/ijse/View/VisitorProfile.fxml");
 
     }
 
     @Override
     public void onUpdateVisitorBtn() throws IOException {
-        createStage("/View/VisitorProfile.fxml");
+        createStage("/lk/ijse/View/VisitorProfile.fxml");
     }
 
     @Override
     public void onViewVisitorBtn() throws IOException {
-        createStage("/View/ViewVisitor.fxml");
+        createStage("/lk/ijse/View/ViewVisitor.fxml");
     }
 
     @Override
     public void visitorProfileBtn() throws IOException {
-        createStage("/View/VisitorProfile.fxml");
+        createStage("/lk/ijse/View/VisitorProfile.fxml");
 
     }
 
@@ -209,28 +209,28 @@ public class MainDashBoard implements MainDashBoardInterFace{
 
     @Override
     public void onAddExpencesBtn() throws IOException {
-        createStage("/View/AddExpences.fxml");
+        createStage("/lk/ijse/View/AddExpences.fxml");
     }
 
     @Override
     public void onDeleteExpencesBtn() throws IOException {
-        createStage("/View/ExpensesSetting.fxml");
+        createStage("/lk/ijse/View/ExpensesSetting.fxml");
     }
 
     @Override
     public void onUpdateExpencesBtn() throws IOException {
-        createStage("/View/ExpensesSetting.fxml");
+        createStage("/lk/ijse/View/ExpensesSetting.fxml");
 
     }
 
     @Override
     public void onViewExpencesBtn() throws IOException {
-        createStage("/View/ViewExpenses.fxml");
+        createStage("/lk/ijse/View/ViewExpenses.fxml");
     }
 
     @Override
     public void expensesProfileBtn() throws IOException {
-        createStage("/View/ExpensesSetting.fxml");
+        createStage("/lk/ijse/View/ExpensesSetting.fxml");
 
     }
 

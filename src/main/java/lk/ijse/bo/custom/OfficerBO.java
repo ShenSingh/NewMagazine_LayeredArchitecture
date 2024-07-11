@@ -17,4 +17,6 @@ public interface OfficerBO extends SuperBo{
     //String generateNewCustomerId()throws SQLException, ClassNotFoundException;;
 
     boolean existOfficer(String id) throws SQLException, ClassNotFoundException;
+
+    OfficerDTO searchOfficer(String searchOfficerId) throws SQLException, ClassNotFoundException;
 }

@@ -1,44 +1,444 @@
 package lk.ijse.Controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import lk.ijse.Controller.Util.Alert.ShowAlert;
+import lk.ijse.Controller.Util.FlogQRCode.QRCodeGenerator;
+import lk.ijse.Controller.Util.Util;
+import lk.ijse.Model.InmateDTO;
+import lk.ijse.Model.VisitorDTO;
+import lk.ijse.Model.VisitorRecordDTO;
+import lk.ijse.bo.custom.*;
+import lk.ijse.dao.DAOFactory;
+import lk.ijse.db.DbConnection;
 
-public class AddVisitorController extends MainDashBoard{
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import org.controlsfx.control.textfield.TextFields;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.file.Files;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class AddVisitorController extends MainDashBoard implements Initializable {
+
+    VisitorBO visitorBO = BoFactory.getInstance().getBo(BoFactory.BoTypes.VISITOR);
+    InmateBO inmateBO = BoFactory.getInstance().getBo(BoFactory.BoTypes.INMATE);
+    VisitorRecordBO visitorRecordBO = BoFactory.getInstance().getBo(BoFactory.BoTypes.VISITOR_RECORD);
+    SetFirstVisitorRecordBO setFirstVisitorRecordBO = (SetFirstVisitorRecordBO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.INMATE_RECORD);
+
+
+    @FXML
+    private TextField visitorId;
+    @FXML
+    private TextField fName;
+    @FXML
+    private TextField lName;
+    @FXML
+    private DatePicker DOB;
+    @FXML
+    private TextField NIC;
+    @FXML
+    private TextField number;
+    @FXML
+    private TextField address;
+    @FXML
+    private ComboBox<String> gender;
+    @FXML
+    private ComboBox<String> visitorType;
+
+    //////////////////
+
+    @FXML
+    private TextField visitorRecordId;
+    @FXML
+    private TextField inmateId;
+    @FXML
+    private TextField inmateName;
+    @FXML
+    private TextField inmateNIC;
+
+    @FXML
+    private Text totalVisitorCount;
+
+    @FXML
+    private TextField searchVisitorId;
+
+    @FXML
+    public Button inmateBtn;
+    public Button officerBtn;
+    public Button dashBoardBtn;
+    public Button settingBtn;
+    public Button manyBtn;
+    public Button sectionBtn;
+    public Button visitorBtn;
+
+
+    private byte[] imageDate;
+    private String path;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        searchVisitorId();
+        setToolTip();
+
+        try {
+            totalVisitorCount.setText(String.valueOf(visitorBO.getAllVisitor().size())+" Visitors");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        setValuesComboBox();
+        setNextVisitorId();
+
+        
+    }
+
+    private void setNextVisitorId() {
+        try {
+            List<VisitorDTO> allVisitor = visitorBO.getAllVisitor();
+            if (allVisitor.size() == 0){
+                visitorId.setText("V001");
+            }
+            else {
+                int lastVisitorId = Integer.parseInt(allVisitor.get(allVisitor.size()-1).getVisitorID().substring(1));
+                lastVisitorId++;
+                if (lastVisitorId < 10){
+                    visitorId.setText("V00"+lastVisitorId);
+                }
+                else if (lastVisitorId < 100){
+                    visitorId.setText("V0"+lastVisitorId);
+                }
+                else {
+                    visitorId.setText("V"+lastVisitorId);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        visitorId.setEditable(false);
+    }
+
+    private void setValuesComboBox() {
+        gender.getItems().addAll("Male", "Female");
+        visitorType.getItems().addAll("Immediate Family", "Legal Representative", "Officials", "Others");
+    }
+
+    private void setToolTip() {
+        Tooltip.install(inmateBtn, new Tooltip("Inmate Management"));
+        Tooltip.install(officerBtn, new Tooltip("Officer Management"));
+        Tooltip.install(dashBoardBtn, new Tooltip("DashBoard"));
+        Tooltip.install(settingBtn, new Tooltip("Setting"));
+        Tooltip.install(manyBtn, new Tooltip("Financial Management"));
+        Tooltip.install(sectionBtn, new Tooltip("Section Management"));
+        Tooltip.install(visitorBtn, new Tooltip("Visitor Management"));
+    }
+
+    private void searchVisitorId() {
+        List<String> visitorIds = new ArrayList<>();
+
+        try {
+            List<VisitorDTO> allVisitors = visitorBO.getAllVisitor();
+            for (VisitorDTO visitor : allVisitors) {
+                visitorIds.add(visitor.getVisitorID()+" - "+visitor.getVisitorFirstName()+" "+visitor.getVisitorLastName());
+            }
+            String[] possibleNames = visitorIds.toArray(new String[0]);
+
+            TextFields.bindAutoCompletion(searchVisitorId, possibleNames);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void searchInmateIdBtn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        String newInmateId = inmateId.getText();
+
+        if (newInmateId != null){
+            InmateDTO inmate = inmateBO.searchInmate(newInmateId);
+            if (inmate != null){
+                inmateName.setText(inmate.getInmateFirstName() + " " + inmate.getInmateLastName());
+                inmateNIC.setText(inmate.getInmateNIC());
+            } else {
+                inmateId.clear();
+                ShowAlert.showErrorNotify("Inmate Not Found");
+            }
+        }else{
+            ShowAlert.showErrorNotify("Please Enter Inmate ID");
+        }
+    }
+    public void canselBtn(ActionEvent actionEvent) {
+        clearFields();
+    }
+
+
+    public void createQr() {
+        if (checkEmptyFields()) {
+            String newVisitorId = visitorId.getText();
+
+//            String visitorId = PasswordHasher.hashPassword(newVisitorId);
+
+                String filePath = "src/main/resources/QRCodeStore/"+newVisitorId+".png";
+                boolean isGenerated = QRCodeGenerator.generateQRCode(newVisitorId,newVisitorId);
+                if (isGenerated){
+                    path = filePath;
+                    createVisitorObject();
+
+                } else {
+                    ShowAlert.showErrorNotify("Error Generating QR Code");
+                }
+        } else {
+            ShowAlert.showErrorNotify("Please Fill All Fields");
+        }
+    }
+
+    public void captureImage() throws IOException {
+
+        setNextVRId();
+
+        try {
+            ProcessBuilder builder = new ProcessBuilder("python3","pyCapturePhoto/app.py");
+            builder.redirectErrorStream(true);
+            Process process = builder.start();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String imagepath = null;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                imagepath = line;
+            }
+            int exitCode = process.waitFor();
+            File file = new File(imagepath);
+            this.imageDate = Util.readImage(file);
+
+            showImage(imageDate);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setNextVRId() {
+        String nextVisitorRecordId = null;
+        try {
+            nextVisitorRecordId = getNextVisitorRecordId(visitorRecordBO.getAllVisitorRecord());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        visitorRecordId.setText(nextVisitorRecordId);
+        visitorRecordId.setEditable(false);
+    }
+
+    private void showImage(byte[] imageDate) {
+        Image image = Util.showImage(imageDate);
+        Alert qrCodeAlert = new Alert(Alert.AlertType.INFORMATION);
+        qrCodeAlert.setTitle("Visitor Image");
+        qrCodeAlert.setHeaderText("Visitor Profile Image");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(300);
+        imageView.setFitHeight(300);
+        qrCodeAlert.getDialogPane().setContent(imageView);
+        qrCodeAlert.showAndWait();
+    }
+    private String getNextVisitorRecordId(List<VisitorRecordDTO> allVisitorRecords) {
+        String maxId = "VR000";
+        for (VisitorRecordDTO visitorRecord : allVisitorRecords) {
+            String currentId = visitorRecord.getVisitorRecordId();
+            // Compare and update maxId if currentId is greater
+            if (currentId.compareTo(maxId) > 0) {
+                maxId = currentId;
+            }
+        }
+        int idNumber = Integer.parseInt(maxId.substring(2)) + 1;
+        return "VR" + String.format("%03d", idNumber);
+    }
+    private boolean checkValidVisitorName() {
+        String newFName = fName.getText();
+        String newLName = lName.getText();
+        if (newFName.matches("[a-zA-Z]+") && newLName.matches("[a-zA-Z]+")){
+            return true;
+        } else {
+            ShowAlert.showErrorNotify("Invalid Name. Name should contain only letters");
+            return false;
+        }
+    }
+    public void submitBtn(ActionEvent actionEvent) throws SQLException {
+        if (createVisitorObject() != null && checkRecordEmptyFields()) {
+
+            createVisitorRecordObject();
+
+            boolean isSaved =  setFirstVisitorRecordBO.setFirstVisitorRecord(createVisitorObject(),createVisitorRecordObject());
+            if (isSaved){
+                ShowAlert.showSuccessNotify("Visitor Record Saved Successfully");
+                createQr();
+                showPass(imageDate);
+                clearFields();
+                this.inmateId.clear();
+                this.visitorRecordId.clear();
+                this.inmateName.clear();
+                this.inmateNIC.clear();
+
+            } else {
+                ShowAlert.showErrorNotify("Error Saving Visitor Record");
+            }
+        } else {
+        ShowAlert.showErrorNotify("Please Fill All Fields");
+        }
+    }
+    public static byte[] createByteArrayFromImage(String imagePath) throws IOException {
+        File file = new File(imagePath);
+        return Files.readAllBytes(file.toPath());
+    }
+
+    private void showPass(byte[] imageDate) {
+
+        File file = new File(path);
+
+        String id = visitorId.getText();
+        byte[] qrCodeData = new byte[0];
+        try {
+            qrCodeData = createByteArrayFromImage(file.getPath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        JasperDesign design = null;
+
+        try {
+            design = JRXmlLoader.load("src/main/resources/Reports/visitor_Visit_Pass_.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+
+            HashMap<String, Object> parameters = new HashMap<>();
+            parameters.put("visitorId", id); // Pass the visitor ID
+            parameters.put("QRcode", qrCodeData);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, DbConnection.getInstance().getConnection());
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        // Export the report to a PDF file
+        //JasperExportManager.exportReportToPdfFile(jasperPrint, "path/to/your/report.pdf");
+
+    }
+
+    private boolean checkRecordEmptyFields() {
+        return Util.checkEmptyFields(visitorRecordId.getText(), inmateId.getText(), inmateName.getText(), inmateNIC.getText());
+    }
+    private VisitorRecordDTO createVisitorRecordObject() {
+        String newRecordId = visitorRecordId.getText();
+        String newVisitorId = visitorId.getText();
+        String newInmateId = inmateId.getText();
+        Date newDate = Date.valueOf(LocalDate.now());
+        LocalTime localTime = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formattedTime = localTime.format(formatter);
+        Time newTime = Time.valueOf(formattedTime);
+
+        VisitorRecordDTO newVisitorRecord = new VisitorRecordDTO(newRecordId,newVisitorId,newInmateId,newDate,newTime);
+        return newVisitorRecord;
+
+    }
+
+    private VisitorDTO createVisitorObject() {
+        if (checkEmptyFields()){
+            if (imageDate == null){
+                ShowAlert.showErrorNotify("Please Capture Image");
+                return null;
+            }
+            String newVisitorId = visitorId.getText();
+            String newFName = fName.getText();
+            String newLName = lName.getText();
+            String dateString = DOB.getEditor().getText();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+            LocalDate localDate = LocalDate.parse(dateString, formatter);
+            Date newDOB = Date.valueOf(localDate);
+
+            String newNIC = NIC.getText();
+            Integer newNumber = Integer.valueOf(number.getText());
+            String newAddress = address.getText();
+            String newGender=gender.getSelectionModel().getSelectedItem();
+            String newVisitorType=visitorType.getSelectionModel().getSelectedItem();
+
+            VisitorDTO newVisitor = new VisitorDTO(newVisitorId,newFName,newLName,newDOB,newNIC,newNumber,newAddress,newVisitorType,newGender,imageDate);
+            return newVisitor;
+        }else{
+            ShowAlert.showErrorNotify("Please Fill All Fields");
+            return null;
+        }
+    }
+    private boolean checkEmptyFields() {
+        return Util.checkEmptyFields(visitorId.getText(), fName.getText(), lName.getText(), DOB.getEditor().getText(), NIC.getText(), number.getText(),address.getText(),gender.getSelectionModel().getSelectedItem(),visitorType.getSelectionModel().getSelectedItem());
+    }
+    private void clearFields() {
+        visitorId.clear();
+        fName.clear();
+        lName.clear();
+        DOB.getEditor().clear();
+        NIC.clear();
+        number.clear();
+        address.clear();
+        gender.getSelectionModel().clearSelection();
+        visitorType.getSelectionModel().clearSelection();
+        setNextVisitorId();
+    }
+    public void takePhotoBtn(ActionEvent actionEvent) {
+        try {
+            captureImage();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void searchVisitorIdOnAction(ActionEvent actionEvent) throws IOException {
+        String id = searchVisitorId.getText().split(" - ")[0];
+        SearchId.setVisitorId(id);
+        createStage("/View/VisitorProfile.fxml");
+    }
+
     public void visitoridonaction(ActionEvent actionEvent) {
+        fName.requestFocus();
     }
 
     public void fNameOnAction(ActionEvent actionEvent) {
+        lName.requestFocus();
     }
 
     public void lNameOnAction(ActionEvent actionEvent) {
+        NIC.requestFocus();
     }
 
     public void nicOnAction(ActionEvent actionEvent) {
+        number.requestFocus();
     }
 
     public void numberOnAction(ActionEvent actionEvent) {
-    }
-
-    public void onAddVisitorBtn(ActionEvent actionEvent) {
-    }
-
-    public void onDeleteVisitorBtn(ActionEvent actionEvent) {
-    }
-
-    public void onUpdateVisitorBtn(ActionEvent actionEvent) {
-    }
-
-    public void submitBtn(ActionEvent actionEvent) {
-    }
-
-    public void searchVisitorIdOnAction(ActionEvent actionEvent) {
-    }
-
-    public void searchInmateIdBtn(ActionEvent actionEvent) {
-    }
-
-    public void canselBtn(ActionEvent actionEvent) {
-    }
-
-    public void takePhotoBtn(ActionEvent actionEvent) {
+        address.requestFocus();
     }
 }

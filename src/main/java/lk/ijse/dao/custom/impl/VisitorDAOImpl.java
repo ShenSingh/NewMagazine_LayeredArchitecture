@@ -4,6 +4,7 @@ import lk.ijse.Entity.Visitor;
 import lk.ijse.dao.SQLUtil;
 import lk.ijse.dao.custom.VisitorDAO;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,10 +23,10 @@ public class VisitorDAOImpl implements VisitorDAO {
                     rst.getString("visitorLastName"),
                     rst.getDate("visitorDOB"),
                     rst.getString("visitorNIC"),
-                    rst.getString("gender"),
                     rst.getInt("visitorNumber"),
                     rst.getString("visitorAddress"),
                     rst.getString("visitorType"),
+                    rst.getString("gender"),
                     rst.getBytes("imageData")
 
                     );
@@ -71,6 +72,11 @@ public class VisitorDAOImpl implements VisitorDAO {
         return SQLUtil.executeQuery("DELETE FROM Visitor WHERE visitorID=?", id);
     }
 
+    @Override
+    public String generateNewId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 //    @Override
 //    public String generateNewId() throws SQLException, ClassNotFoundException {
 //        return null;
@@ -86,10 +92,10 @@ public class VisitorDAOImpl implements VisitorDAO {
                     rst.getString("visitorLastName"),
                     rst.getDate("visitorDOB"),
                     rst.getString("visitorNIC"),
-                    rst.getString("gender"),
                     rst.getInt("visitorNumber"),
                     rst.getString("visitorAddress"),
                     rst.getString("visitorType"),
+                    rst.getString("gender"),
                     rst.getBytes("visitorImage")
             );
         }
@@ -102,4 +108,28 @@ public class VisitorDAOImpl implements VisitorDAO {
         return rst.next();
     }
 
+    @Override
+    public ArrayList<Visitor> getVisitorsByInput(String input) throws SQLException, ClassNotFoundException {
+        ArrayList<Visitor> allVisitors = new ArrayList<>();
+
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT * FROM Visitor WHERE visitorId  LIKE ?");
+
+        while (resultSet.next()) {
+            String visitorId = resultSet.getString(1);
+            String visitorFirstName = resultSet.getString(2);
+            String visitorLastName = resultSet.getString(3);
+            Date visitorDOB = resultSet.getDate(4);
+            String visitorNIC = resultSet.getString(5);
+            Integer visitorNumber = resultSet.getInt(6);
+            String visitorAddress = resultSet.getString(7);
+            String visitorType = resultSet.getString(8);
+            String gender = resultSet.getString(9);
+            byte[] visitorImage = resultSet.getBytes(10);
+            Visitor visitor = new Visitor(visitorId, visitorFirstName, visitorLastName, visitorDOB, visitorNIC, visitorNumber, visitorAddress, visitorType, gender,visitorImage);
+
+            allVisitors.add(visitor);
+        }
+
+        return allVisitors;
+    }
 }

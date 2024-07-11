@@ -1,17 +1,268 @@
 package lk.ijse.Controller;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import lk.ijse.Model.InmateDTO;
+import lk.ijse.Model.SectionDTO;
+import lk.ijse.bo.custom.BoFactory;
+import lk.ijse.bo.custom.InmateBO;
+import lk.ijse.bo.custom.QuaryBo;
+import lk.ijse.bo.custom.SectionBO;
+import org.controlsfx.control.textfield.TextFields;
 
-public class InmatePageController extends MainDashBoard {
-    public void searchIdField(ActionEvent actionEvent) {
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+
+public class InmatePageController extends MainDashBoard implements Initializable {
+    public ImageView sirLankaLogo;
+    public AnchorPane MainAnchorPane;
+
+    public TableColumn<InmateDTO, String> tvInmateId;
+    public TableColumn<InmateDTO, String> tvFName;
+    public TableColumn<InmateDTO, String> tvLName;
+    public TableColumn<InmateDTO, Date> tvDOB;
+    public TableColumn<InmateDTO, String> tvNIC;
+    public TableColumn<InmateDTO, String> tvGender;
+    public TableColumn<InmateDTO, String> tvAddress;
+    public TableColumn<InmateDTO, String> tvStatus;
+
+    public Text activeInmateCount;
+    public Text totalInmateCount;
+    public Text tGenderInmateCount;
+    public Text femaleInmateCount;
+    public Text maleInmateCount;
+
+    public PieChart freeSpase;
+    public TextField searchId;
+
+
+
+
+
+    @FXML
+    public Button inmateBtn;
+    public Button officerBtn;
+    public Button dashBoardBtn;
+    public Button settingBtn;
+    public Button manyBtn;
+    public Button sectionBtn;
+    public Button visitorBtn;
+
+
+    public Text activeCaseCount;
+    public Text releaseSoonCount;
+
+    InmateBO inmateBO = BoFactory.getInstance().getBo(BoFactory.BoTypes.INMATE);
+    SectionBO sectionBO = BoFactory.getInstance().getBo(BoFactory.BoTypes.SECTION);
+    QuaryBo quaryBo = BoFactory.getInstance().getBo(BoFactory.BoTypes.QUERY);
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        visitorBtn.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                try {
+                    setShortCutKey(newScene);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        setCellValueFactory();
+        try {
+            setValues();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            setGenderCount();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        setToolTip();
+        setSearchIds();
     }
 
-    public void activeCaseBtn(ActionEvent actionEvent) {
+    private void setShortCutKey(Scene scene) throws IOException {
+
+        if (scene == null) {
+            System.out.println("scene is null");
+        }else {
+            scene.setOnKeyPressed(event -> {
+                if (new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN).match(event)) {
+                    System.out.println("click ctrl + d");
+                    try {
+                        createStage("/View/DashBoard.fxml");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if (new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN).match(event)) {
+                    System.out.println("click ctrl + o");
+                    try {
+                        createStage("/View/OfficerPage.fxml");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if (new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_DOWN).match(event)) {
+                    System.out.println("click ctrl + v");
+                    try {
+                        createStage("/View/VisitorPage.fxml");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if (new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN).match(event)) {
+                    System.out.println("click ctrl + s");
+                    try {
+                        createStage("/View/SectionPage.fxml");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if (new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN).match(event)) {
+                    System.out.println("click ctrl + e");
+                    try {
+                        createStage("/View/financialPage.fxml");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+        }
+    }
+    private void setSearchIds() {
+        List<String> inmateIds = new ArrayList<>();
+
+        try {
+            List<InmateDTO> allInmates = inmateBO.getAllInmate();
+            for (InmateDTO inmate : allInmates) {
+                inmateIds.add(inmate.getInmateId()+" - "+inmate.getInmateFirstName()+" "+inmate.getInmateLastName());
+            }
+            String[] possibleNames = inmateIds.toArray(new String[0]);
+
+            TextFields.bindAutoCompletion(searchId, possibleNames);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
-    public void releseSoonBtn(ActionEvent actionEvent) {
+    private void setToolTip() {
+        Tooltip.install(inmateBtn, new Tooltip("Inmate Management"));
+        Tooltip.install(officerBtn, new Tooltip("Officer Management"));
+        Tooltip.install(dashBoardBtn, new Tooltip("DashBoard"));
+        Tooltip.install(settingBtn, new Tooltip("Setting"));
+        Tooltip.install(manyBtn, new Tooltip("Financial Management"));
+        Tooltip.install(sectionBtn, new Tooltip("Section Management"));
+        Tooltip.install(visitorBtn, new Tooltip("Visitor Management"));
     }
 
-    public void activeInmateBtn(ActionEvent actionEvent) {
+    private void setValues() throws SQLException, ClassNotFoundException {
+        List<SectionDTO> allSections = sectionBO.getJailSections();
+
+        int totalSpase=0;
+
+        for (SectionDTO section : allSections) {
+            totalSpase+=section.getCapacity();
+        }
+
+        int totalInmates = inmateBO.getAllInmate().size();
+
+        int freeSpaseCount = totalSpase-totalInmates;
+
+        this.freeSpase.getData().add(new PieChart.Data("Free Spase",freeSpaseCount));
+        this.freeSpase.getData().add(new PieChart.Data("Occupied Spase",totalInmates));
+
+        freeSpase.setLabelLineLength(10);
+        freeSpase.setLegendVisible(true);
+        freeSpase.setLabelsVisible(true);
+
+
+
     }
+
+    private void setGenderCount() throws Exception {
+
+        maleInmateCount.setText(String.valueOf(inmateBO.getInmatesByGender("Male").size())+" Inmates");
+        femaleInmateCount.setText(String.valueOf(inmateBO.getInmatesByGender("Female").size())+" Inmates");
+        tGenderInmateCount.setText(String.valueOf(inmateBO.getInmatesByGender("Transgender").size())+" Inmates");
+        activeInmateCount.setText(String.valueOf(inmateBO.getActiveInmates().size())+" Inmates");
+        totalInmateCount.setText(String.valueOf(inmateBO.getAllInmate().size())+" Inmates");
+        activeCaseCount.setText(String.valueOf(quaryBo.getActiveCaseInmate().size())+" Inmates");
+        releaseSoonCount.setText(String.valueOf(quaryBo.getReleaseSoonInmates().size())+" Inmates");
+    }
+
+    private void setCellValueFactory() {
+        tvInmateId.setCellValueFactory(new PropertyValueFactory<>("inmateId"));
+        tvFName.setCellValueFactory(new PropertyValueFactory<>("inmateFirstName"));
+        tvLName.setCellValueFactory(new PropertyValueFactory<>("inmateLastName"));
+        tvDOB.setCellValueFactory(new PropertyValueFactory<>("inmateDOB"));
+        tvNIC.setCellValueFactory(new PropertyValueFactory<>("inmateNIC"));
+        tvGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        tvAddress.setCellValueFactory(new PropertyValueFactory<>("inmateAddress"));
+        tvStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        try {
+            List<InmateDTO> inmates = inmateBO.getAllInmate();
+            tvAddress.getTableView().setItems(FXCollections.observableArrayList(inmates));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void activeInmateBtn(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
+        List<InmateDTO> inmates = inmateBO.getActiveInmates();
+        tvAddress.getTableView().setItems(FXCollections.observableArrayList(inmates));
+    }
+
+    public void activeCaseBtn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        List<InmateDTO> inmates =quaryBo.getActiveCaseInmate();
+        tvAddress.getTableView().setItems(FXCollections.observableArrayList(inmates));
+    }
+
+    public void releseSoonBtn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        List<InmateDTO> inmates =quaryBo.getReleaseSoonInmates();
+        tvAddress.getTableView().setItems(FXCollections.observableArrayList(inmates));
+    }
+
+    public void searchIdField(ActionEvent actionEvent) throws IOException {
+        String id = searchId.getText().split(" - ")[0];
+        SearchId.setInmateId(id);
+        createStage("/View/InmateProfile.fxml");
+    }
+
+
 }

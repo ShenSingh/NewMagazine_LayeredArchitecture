@@ -56,6 +56,11 @@ public class VisitorRecordDAOImpl implements VisitorRecordDAO {
         return SQLUtil.executeQuery("DELETE FROM VisitorRecord WHERE visitorRecordId=?", id);
     }
 
+    @Override
+    public String generateNewId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 //    @Override
 //    public String generateNewId() throws SQLException, ClassNotFoundException {
 //        return null;

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SectionPageController">
+<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="/lk/ijse/css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SectionPageController">
    <children>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="12.0" layoutY="103.0">
          <image>
@@ -21,7 +21,7 @@
       </ImageView>
       <AnchorPane layoutX="53.0" layoutY="23.0" prefHeight="608.0" prefWidth="1211.0" styleClass="whiteAnchorPane">
          <children>
-            <TableView layoutX="290.0" layoutY="374.0" prefHeight="233.0" prefWidth="622.0" styleClass="tableView" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+            <TableView layoutX="290.0" layoutY="374.0" prefHeight="233.0" prefWidth="622.0" styleClass="tableView" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                <columns>
                   <TableColumn fx:id="TVsectionId" prefWidth="75.0" text="Id " />
                   <TableColumn fx:id="TVname" prefWidth="116.0" text="Name" />
@@ -55,7 +55,7 @@
                   <Font size="10.0" />
                </font>
             </Text>
-            <AnchorPane layoutX="34.0" layoutY="72.0" prefHeight="70.0" prefWidth="150.0" styleClass="categoryAnchor" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+            <AnchorPane layoutX="34.0" layoutY="72.0" prefHeight="70.0" prefWidth="150.0" styleClass="categoryAnchor" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                <children>
                   <Text fill="#000000c4" layoutX="72.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categoryText" text="Add Section" wrappingWidth="55.0">
                      <font>
@@ -72,7 +72,7 @@
                         <Image url="@../images/icon/add.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="5.0" layoutY="8.0" mnemonicParsing="false" onAction="#onAddSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+                  <Button layoutX="5.0" layoutY="8.0" mnemonicParsing="false" onAction="#onAddSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -86,7 +86,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Text>
-                  <Button layoutX="5.0" layoutY="10.0" mnemonicParsing="false" onAction="#onDeleteSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+                  <Button layoutX="5.0" layoutY="10.0" mnemonicParsing="false" onAction="#onDeleteSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -110,7 +110,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Text>
-                  <Button layoutX="5.0" layoutY="7.0" mnemonicParsing="false" onAction="#onUpdateSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+                  <Button layoutX="5.0" layoutY="7.0" mnemonicParsing="false" onAction="#onUpdateSectionBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -140,7 +140,7 @@
             <TextField fx:id="searchId" layoutX="32.0" layoutY="2.0" onAction="#searchIdField" prefHeight="26.0" prefWidth="599.0" promptText="Search Id" styleClass="searchTextField" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="330.0" layoutY="162.0" prefHeight="125.0" prefWidth="185.0" styleClass="contAnchor" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <AnchorPane layoutX="330.0" layoutY="162.0" prefHeight="125.0" prefWidth="185.0" styleClass="contAnchor" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <children>
             <Text layoutX="62.0" layoutY="65.0" mouseTransparent="true" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="contAnchorText" text="Active Section" wrappingWidth="112.00003051757812">
                <font>
@@ -153,7 +153,7 @@
                </font>
             </Text>
             <AnchorPane layoutX="8.0" layoutY="14.0" prefHeight="8.0" prefWidth="8.0" style="-fx-background-color: green; -fx-background-radius: 10px;" />
-            <AnchorPane layoutX="8.0" layoutY="38.0" prefHeight="45.0" prefWidth="45.0" styleClass="iconAnchor" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+            <AnchorPane layoutX="8.0" layoutY="38.0" prefHeight="45.0" prefWidth="45.0" styleClass="iconAnchor" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                <children>
                   <ImageView layoutX="4.0" layoutY="-4.0">
                      <image>
@@ -162,7 +162,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Button layoutX="11.0" layoutY="5.0" minWidth="40.0" mnemonicParsing="false" onAction="#activeSectionBtn" prefHeight="109.0" prefWidth="160.0" styleClass="contAnchorViewBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+            <Button layoutX="11.0" layoutY="5.0" minWidth="40.0" mnemonicParsing="false" onAction="#activeSectionBtn" prefHeight="109.0" prefWidth="160.0" styleClass="contAnchorViewBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -173,12 +173,12 @@
                </image>
             </ImageView>
          </children></AnchorPane>
-      <Button layoutX="-1.0" layoutY="101.0" mnemonicParsing="false" onAction="#onInmate" prefHeight="47.0" prefWidth="63.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button layoutX="-1.0" layoutY="101.0" mnemonicParsing="false" onAction="#onInmate" prefHeight="47.0" prefWidth="63.0" styleClass="manuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="visitorBtn" layoutX="-2.0" layoutY="208.0" mnemonicParsing="false" onAction="#onVisitor" prefHeight="53.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button fx:id="visitorBtn" layoutX="-2.0" layoutY="208.0" mnemonicParsing="false" onAction="#onVisitor" prefHeight="53.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -190,7 +190,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="sectionBtn" layoutX="-2.0" layoutY="271.0" mnemonicParsing="false" onAction="#onSection" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button fx:id="sectionBtn" layoutX="-2.0" layoutY="271.0" mnemonicParsing="false" onAction="#onSection" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -202,7 +202,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="manyBtn" layoutX="-2.0" layoutY="329.0" mnemonicParsing="false" onAction="#onMany" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button fx:id="manyBtn" layoutX="-2.0" layoutY="329.0" mnemonicParsing="false" onAction="#onMany" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -214,7 +214,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="-2.0" layoutY="387.0" mnemonicParsing="false" onAction="#onLogOut" prefHeight="28.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button layoutX="-2.0" layoutY="387.0" mnemonicParsing="false" onAction="#onLogOut" prefHeight="28.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -226,7 +226,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="officerBtn" layoutX="-2.0" layoutY="147.0" mnemonicParsing="false" onAction="#onOfficer" prefHeight="53.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button fx:id="officerBtn" layoutX="-2.0" layoutY="147.0" mnemonicParsing="false" onAction="#onOfficer" prefHeight="53.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -238,7 +238,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="inmateBtn" layoutX="-2.0" layoutY="88.0" mnemonicParsing="false" onAction="#onInmate" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button fx:id="inmateBtn" layoutX="-2.0" layoutY="88.0" mnemonicParsing="false" onAction="#onInmate" prefHeight="47.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -250,7 +250,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="dashBoardBtn" layoutY="25.0" mnemonicParsing="false" onAction="#onDashBord" prefHeight="47.0" prefWidth="50.0" styleClass="sriLogoBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button fx:id="dashBoardBtn" layoutY="25.0" mnemonicParsing="false" onAction="#onDashBord" prefHeight="47.0" prefWidth="50.0" styleClass="sriLogoBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -262,7 +262,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane layoutX="569.0" layoutY="163.0" prefHeight="125.0" prefWidth="185.0" styleClass="contAnchor" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <AnchorPane layoutX="569.0" layoutY="163.0" prefHeight="125.0" prefWidth="185.0" styleClass="contAnchor" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <children>
             <Text layoutX="62.0" layoutY="65.0" mouseTransparent="true" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="contAnchorText" text="Jail Section" wrappingWidth="112.00003051757812">
                <font>
@@ -275,7 +275,7 @@
                </font>
             </Text>
             <AnchorPane layoutX="8.0" layoutY="14.0" prefHeight="8.0" prefWidth="8.0" style="-fx-background-color: green; -fx-background-radius: 10px;" />
-            <AnchorPane layoutX="8.0" layoutY="38.0" prefHeight="45.0" prefWidth="45.0" styleClass="iconAnchor" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+            <AnchorPane layoutX="8.0" layoutY="38.0" prefHeight="45.0" prefWidth="45.0" styleClass="iconAnchor" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="2.0" layoutY="-5.0">
                      <image>
@@ -284,7 +284,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Button layoutX="21.0" layoutY="5.0" minWidth="40.0" mnemonicParsing="false" onAction="#jailSectionBtn" prefHeight="109.0" prefWidth="150.0" styleClass="contAnchorViewBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+            <Button layoutX="21.0" layoutY="5.0" minWidth="40.0" mnemonicParsing="false" onAction="#jailSectionBtn" prefHeight="109.0" prefWidth="150.0" styleClass="contAnchorViewBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -296,7 +296,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="804.0" layoutY="163.0" prefHeight="125.0" prefWidth="185.0" styleClass="contAnchor" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <AnchorPane layoutX="804.0" layoutY="163.0" prefHeight="125.0" prefWidth="185.0" styleClass="contAnchor" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <children>
             <Text layoutX="62.0" layoutY="54.0" mouseTransparent="true" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="contAnchorText" text="High Security Section" wrappingWidth="112.00003051757812">
                <font>
@@ -309,7 +309,7 @@
                </font>
             </Text>
             <AnchorPane layoutX="8.0" layoutY="14.0" prefHeight="8.0" prefWidth="8.0" style="-fx-background-color: green; -fx-background-radius: 10px;" />
-            <AnchorPane layoutX="8.0" layoutY="38.0" prefHeight="45.0" prefWidth="45.0" styleClass="iconAnchor" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+            <AnchorPane layoutX="8.0" layoutY="38.0" prefHeight="45.0" prefWidth="45.0" styleClass="iconAnchor" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                <children>
                   <ImageView layoutX="1.0" layoutY="-4.0">
                      <image>
@@ -318,7 +318,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Button layoutX="21.0" layoutY="5.0" minWidth="40.0" mnemonicParsing="false" onAction="#highSecuritySection" prefHeight="109.0" prefWidth="150.0" styleClass="contAnchorViewBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+            <Button layoutX="21.0" layoutY="5.0" minWidth="40.0" mnemonicParsing="false" onAction="#highSecuritySection" prefHeight="109.0" prefWidth="150.0" styleClass="contAnchorViewBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -330,7 +330,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button layoutX="1209.0" mnemonicParsing="false" onAction="#systemCloseBtn" prefHeight="24.0" prefWidth="4.0" styleClass="closeBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button layoutX="1209.0" mnemonicParsing="false" onAction="#systemCloseBtn" prefHeight="24.0" prefWidth="4.0" styleClass="closeBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -342,7 +342,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="1184.0" layoutY="1.0" mnemonicParsing="false" onAction="#miniHideBtn" prefHeight="15.0" prefWidth="20.0" styleClass="miniBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
+      <Button layoutX="1184.0" layoutY="1.0" mnemonicParsing="false" onAction="#miniHideBtn" prefHeight="15.0" prefWidth="20.0" styleClass="miniBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

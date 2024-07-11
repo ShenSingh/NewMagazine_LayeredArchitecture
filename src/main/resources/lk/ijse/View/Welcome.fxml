@@ -9,10 +9,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="518.0" prefWidth="854.0" styleClass="mainAnchor" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.WelcomeController">
+<AnchorPane prefHeight="518.0" prefWidth="854.0" styleClass="mainAnchor" stylesheets="@../css/WelcomeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.WelcomeController">
    <TextField fx:id="uNameField" layoutX="525.0" layoutY="213.0" onAction="#uNameOnAction" promptText="Your User Id" styleClass="uNameField" />
-   <PasswordField fx:id="uPassField" layoutX="527.0" layoutY="306.0" onAction="#passwordOnAction" promptText="Your Password" styleClass="uPassField" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
-   <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="588.0" layoutY="414.0" onAction="#signInBtn" prefHeight="33.0" prefWidth="106.0" styleClass="signInBtn" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" text="SIGN IN" textFill="WHITE" textOverrun="CLIP">
+   <PasswordField fx:id="uPassField" layoutX="527.0" layoutY="306.0" onAction="#passwordOnAction" promptText="Your Password" styleClass="uPassField" stylesheets="/lk/ijse/css/dashBoardStyle.css" />
+   <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="588.0" layoutY="414.0" onAction="#signInBtn" prefHeight="33.0" prefWidth="106.0" styleClass="signInBtn" stylesheets="/lk/ijse/css/WelcomeStyle.css" text="SIGN IN" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Dyuthi Regular" size="13.0" />
       </font>
@@ -23,14 +23,14 @@
          <InnerShadow />
       </effect>
    </JFXButton>
-   <AnchorPane fx:id="sAnchor" layoutX="-228.0" layoutY="62.0" prefHeight="481.0" prefWidth="827.0" rotate="76.0" styleClass="moveAnchor" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
+   <AnchorPane fx:id="sAnchor" layoutX="-228.0" layoutY="62.0" prefHeight="481.0" prefWidth="827.0" rotate="76.0" styleClass="moveAnchor" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
    <Text layoutX="520.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="mainLoginText" text="Sign In to" textAlignment="CENTER" wrappingWidth="112.99169921875">
       <font>
          <Font name="DejaVu Sans ExtraLight" size="20.0" />
       </font>
    </Text>
-   <AnchorPane layoutX="531.0" layoutY="237.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
-   <AnchorPane layoutX="532.0" layoutY="330.0" prefHeight="2.0" prefWidth="250.0" styleClass="uPassLine" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
+   <AnchorPane layoutX="531.0" layoutY="237.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
+   <AnchorPane layoutX="532.0" layoutY="330.0" prefHeight="2.0" prefWidth="250.0" styleClass="uPassLine" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
    <Text layoutX="519.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="uNameText" text="User Id" />
    <Text layoutX="518.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="uPassText" text="Password" />
    <Text fx:id="secondLoginTextMain" layoutX="76.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="secondLoginText" text="Hello, User !" textAlignment="CENTER" wrappingWidth="237.99169921875">
@@ -43,7 +43,7 @@
          <Font name="Garuda Bold" size="14.0" />
       </font>
    </Text>
-   <JFXButton fx:id="signInSignupBtn" buttonType="RAISED" contentDisplay="CENTER" layoutX="130.0" layoutY="347.0" onAction="#signInSignupBtn" prefHeight="33.0" prefWidth="106.0" styleClass="signInSignUpBtn" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" text="SIGN UP" textFill="WHITE" textOverrun="CLIP">
+   <JFXButton fx:id="signInSignupBtn" buttonType="RAISED" contentDisplay="CENTER" layoutX="130.0" layoutY="347.0" onAction="#signInSignupBtn" prefHeight="33.0" prefWidth="106.0" styleClass="signInSignUpBtn" stylesheets="/lk/ijse/css/WelcomeStyle.css" text="SIGN UP" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Dyuthi Regular" size="13.0" />
       </font>
@@ -80,26 +80,26 @@
       </font>
    </Text>
    <TextField fx:id="suUNameField" layoutX="72.0" layoutY="147.0" onAction="#SUuNameOnAction" promptText="Your User Name" styleClass="uNameField" />
-   <AnchorPane fx:id="lineAnchor1" layoutX="78.0" layoutY="171.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
+   <AnchorPane fx:id="lineAnchor1" layoutX="78.0" layoutY="171.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
    <Text fx:id="suNameText" layoutX="66.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="uNameText" text="User Name" />
    <TextField fx:id="suUEmailField" layoutX="71.0" layoutY="215.0" onAction="#SUemailOnAction" prefHeight="24.0" prefWidth="213.0" promptText="Your User Email" styleClass="uNameField" />
-   <AnchorPane fx:id="lineAnchor2" layoutX="77.0" layoutY="239.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
+   <AnchorPane fx:id="lineAnchor2" layoutX="77.0" layoutY="239.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
    <Text fx:id="suEmailText" layoutX="65.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="uNameText" text="User Email" />
-   <JFXButton fx:id="sendOTPBtn" layoutX="278.0" layoutY="215.0" onAction="#sendOTPBtn" prefHeight="23.0" prefWidth="50.0" styleClass="otpSendBtn" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" text="send">
+   <JFXButton fx:id="sendOTPBtn" layoutX="278.0" layoutY="215.0" onAction="#sendOTPBtn" prefHeight="23.0" prefWidth="50.0" styleClass="otpSendBtn" stylesheets="/lk/ijse/css/WelcomeStyle.css" text="send">
       <font>
          <Font size="14.0" />
       </font>
    </JFXButton>
    <TextField fx:id="suUOTPField" layoutX="71.0" layoutY="284.0" onAction="#SUotpOnAction" promptText="Your OTP Code" styleClass="uNameField" />
-   <AnchorPane fx:id="lineAnchor3" layoutX="77.0" layoutY="308.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
+   <AnchorPane fx:id="lineAnchor3" layoutX="77.0" layoutY="308.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
    <Text fx:id="suOTPText" layoutX="65.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="uNameText" text="OTP Code" />
-   <PasswordField fx:id="suUPassField" layoutX="72.0" layoutY="353.0" onAction="#SUpasswordOnAction" promptText="Your Password" styleClass="uPassField" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
-   <AnchorPane fx:id="lineAnchor4" layoutX="77.0" layoutY="377.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
+   <PasswordField fx:id="suUPassField" layoutX="72.0" layoutY="353.0" onAction="#SUpasswordOnAction" promptText="Your Password" styleClass="uPassField" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
+   <AnchorPane fx:id="lineAnchor4" layoutX="77.0" layoutY="377.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
    <Text fx:id="suPassText" layoutX="65.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="uNameText" text="User Password" />
-   <PasswordField fx:id="suUComPassField" layoutX="72.0" layoutY="421.0" onAction="#SUcomPassOnAction" promptText="Your Password" styleClass="uPassField" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
-   <AnchorPane fx:id="lineAnchor5" layoutX="77.0" layoutY="445.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" />
+   <PasswordField fx:id="suUComPassField" layoutX="72.0" layoutY="421.0" onAction="#SUcomPassOnAction" promptText="Your Password" styleClass="uPassField" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
+   <AnchorPane fx:id="lineAnchor5" layoutX="77.0" layoutY="445.0" prefHeight="2.0" prefWidth="250.0" styleClass="uNameLine" stylesheets="/lk/ijse/css/WelcomeStyle.css" />
    <Text fx:id="suComPassText" layoutX="65.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="uNameText" text="Comform Password" />
-   <JFXButton fx:id="signUpBtn" buttonType="RAISED" contentDisplay="CENTER" layoutX="157.0" layoutY="485.0" onAction="#signUpBtn" prefHeight="33.0" prefWidth="106.0" styleClass="signInBtn" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" text="SIGN UP" textFill="WHITE" textOverrun="CLIP">
+   <JFXButton fx:id="signUpBtn" buttonType="RAISED" contentDisplay="CENTER" layoutX="157.0" layoutY="485.0" onAction="#signUpBtn" prefHeight="33.0" prefWidth="106.0" styleClass="signInBtn" stylesheets="/lk/ijse/css/WelcomeStyle.css" text="SIGN UP" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Dyuthi Regular" size="13.0" />
       </font>
@@ -115,11 +115,12 @@
          <Font name="Garuda Bold" size="14.0" />
       </font>
    </Text>
-   <JFXButton fx:id="signupSignInBtn" buttonType="RAISED" contentDisplay="CENTER" layoutX="610.0" layoutY="329.0" onAction="#signUpSignInBtn" prefHeight="33.0" prefWidth="106.0" styleClass="signInSignUpBtn" stylesheets="@../lk/ijse/Alert/css/WelcomeStyle.css" text="SIGN IN" textFill="WHITE" textOverrun="CLIP">
+   <JFXButton fx:id="signupSignInBtn" buttonType="RAISED" contentDisplay="CENTER" layoutX="610.0" layoutY="329.0" onAction="#signUpSignInBtn" prefHeight="33.0" prefWidth="106.0" styleClass="signInSignUpBtn" stylesheets="/lk/ijse/css/WelcomeStyle.css" text="SIGN IN" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Dyuthi Regular" size="13.0" />
       </font>
       <cursor>
+
          <Cursor fx:constant="HAND" />
       </cursor>
       <effect>

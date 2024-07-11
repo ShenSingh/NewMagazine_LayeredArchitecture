@@ -43,4 +43,9 @@ public class UserBoImpl implements UserBO {
     public boolean existUser(String id) throws SQLException, ClassNotFoundException {
         return userDAO.exist(id);
     }
+
+    @Override
+    public boolean checkValid(String uId, String password) throws Exception {
+        return userDAO.checkValid(uId,password);
+    }
 }

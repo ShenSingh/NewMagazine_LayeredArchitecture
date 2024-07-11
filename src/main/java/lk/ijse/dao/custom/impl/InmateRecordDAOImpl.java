@@ -45,6 +45,11 @@ public class InmateRecordDAOImpl implements InmateRecordDAO {
         return SQLUtil.executeQuery("DELETE FROM InmateRecord WHERE inmateId=?", id);
     }
 
+    @Override
+    public String generateNewId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 //    @Override
 //    public String generateNewId() throws SQLException, ClassNotFoundException {
 //        return null;

@@ -7,6 +7,7 @@ import lk.ijse.dao.custom.SectionDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SectionDAOImpl implements SectionDAO {
     @Override
@@ -45,6 +46,11 @@ public class SectionDAOImpl implements SectionDAO {
         return SQLUtil.executeQuery("DELETE FROM Section WHERE sectionId=?", id);
     }
 
+    @Override
+    public String generateNewId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 //    @Override
 //    public String generateNewId() throws SQLException, ClassNotFoundException {
 //        return null;
@@ -70,5 +76,25 @@ public class SectionDAOImpl implements SectionDAO {
     public boolean exist(String id) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.executeQuery("SELECT sectionId FROM Section WHERE sectionId=?", id);
         return rst.next();
+    }
+
+    @Override
+    public List<Section> getJailSections() throws SQLException, ClassNotFoundException {
+        ResultSet rst = SQLUtil.executeQuery("SELECT * FROM Section WHERE sectionName LIKE 'Jail-%'");
+
+        ArrayList<Section> allSections = new ArrayList<>();
+        while (rst.next()) {
+            Section section = new Section(
+                    rst.getString("sectionId"),
+                    rst.getString("sectionName"),
+                    rst.getString("location"),
+                    rst.getInt("capacity"),
+                    rst.getString("securityLevel"),
+                    rst.getString("status")
+            );
+            allSections.add(section);
+        }
+        return allSections;
+
     }
 }

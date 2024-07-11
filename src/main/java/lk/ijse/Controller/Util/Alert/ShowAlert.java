@@ -1,6 +1,5 @@
+package lk.ijse.Controller.Util.Alert;
 
-
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
@@ -10,28 +9,6 @@ import org.controlsfx.control.Notifications;
 import java.net.URL;
 
 public class ShowAlert {
-
-    private final String title;
-    private final String headerText;
-    private final String contentText;
-    private final Alert.AlertType alertType;
-
-    public ShowAlert(String title, String headerText, String contentText, Alert.AlertType alertType) {
-        this.title = title;
-        this.headerText = headerText;
-        this.contentText = contentText;
-        this.alertType = alertType;
-        show();
-    }
-
-    private void show() {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(headerText);
-        alert.setContentText(contentText);
-        alert.show();
-        playSound();
-    }
 
     public static void showErrorNotify(String contentText) {
         Image icon = new Image("file:///home/shen/Documents/myProject/NewManazinePrison/src/main/resources/images/icon/errorIcon.png");

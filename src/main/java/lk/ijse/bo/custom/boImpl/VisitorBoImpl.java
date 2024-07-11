@@ -8,6 +8,7 @@ import lk.ijse.dao.custom.VisitorDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VisitorBoImpl implements VisitorBO {
 
@@ -42,5 +43,37 @@ public class VisitorBoImpl implements VisitorBO {
     @Override
     public boolean existVisitor(String id) throws SQLException, ClassNotFoundException {
         return visitorDAO.exist(id);
+    }
+
+    @Override
+    public ArrayList<VisitorDTO> getVisitorByVisitorType(String immediateFamily) throws SQLException, ClassNotFoundException {
+
+        ArrayList<VisitorDTO> visitorDTOS = this.getAllVisitor();
+        ArrayList<VisitorDTO> immediateFamilyList = new ArrayList<>();
+
+        for (VisitorDTO visitorDTO : visitorDTOS) {
+            if (visitorDTO.getVisitorType().equals(immediateFamily)) {
+                immediateFamilyList.add(visitorDTO);
+            }
+        }
+
+        return immediateFamilyList;
+    }
+
+    @Override
+    public VisitorDTO searchVisitor(String searchVisitorId) throws SQLException, ClassNotFoundException {
+        Visitor visitor = visitorDAO.search(searchVisitorId);
+        return new VisitorDTO(visitor.getVisitorID(),visitor.getVisitorFirstName(),visitor.getVisitorLastName(),visitor.getVisitorDOB(),visitor.getVisitorNIC(),visitor.getVisitorNumber(),visitor.getVisitorAddress(),visitor.getVisitorType(),visitor.getGender(),visitor.getVisitorImage());
+    }
+
+    @Override
+    public List<VisitorDTO> getVisitorsByInput(String input) throws SQLException, ClassNotFoundException {
+        ArrayList<Visitor> visitors = visitorDAO.getVisitorsByInput(input);
+        ArrayList<VisitorDTO> visitorDTOS = new ArrayList<>();
+
+        for (Visitor visitor : visitors) {
+            visitorDTOS.add(new VisitorDTO(visitor.getVisitorID(),visitor.getVisitorFirstName(),visitor.getVisitorLastName(),visitor.getVisitorDOB(),visitor.getVisitorNIC(),visitor.getVisitorNumber(),visitor.getVisitorAddress(),visitor.getVisitorType(),visitor.getGender(),visitor.getVisitorImage()));
+        }
+        return visitorDTOS;
     }
 }

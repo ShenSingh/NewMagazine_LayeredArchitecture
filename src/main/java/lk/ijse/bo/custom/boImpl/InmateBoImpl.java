@@ -42,4 +42,21 @@ public class InmateBoImpl implements InmateBO {
     public boolean existInmate(String id) throws SQLException, ClassNotFoundException {
         return inmateDAO.exist(id);
     }
+
+    @Override
+    public InmateDTO searchInmate(String id) throws SQLException, ClassNotFoundException {
+        Inmate inmate = inmateDAO.search(id);
+
+        return new InmateDTO(inmate.getInmateId(), inmate.getInmateFirstName(), inmate.getInmateLastName(), inmate.getInmateDOB(), inmate.getInmateNIC(), inmate.getGender(), inmate.getInmateAddress(), inmate.getStatus(), inmate.getInmateImage());
+    }
+
+    @Override
+    public ArrayList<InmateDTO> getInmatesByGender(String genderType) throws Exception {
+        return inmateDAO.getInmatesByGender(genderType);
+    }
+
+    @Override
+    public ArrayList<InmateDTO> getActiveInmates() throws SQLException, ClassNotFoundException {
+        return inmateDAO.getActiveInmates();
+    }
 }

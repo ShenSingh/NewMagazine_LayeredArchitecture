@@ -75,6 +75,11 @@ public class OfficerDAOImpl implements OfficerDAO {
         return SQLUtil.executeQuery("DELETE FROM Officer WHERE officerId=?", id);
     }
 
+    @Override
+    public String generateNewId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 //    @Override
 //    public String generateNewId() throws SQLException, ClassNotFoundException {
 //        return null;
