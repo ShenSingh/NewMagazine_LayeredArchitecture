@@ -80,21 +80,29 @@ public class SectionDAOImpl implements SectionDAO {
 
     @Override
     public List<Section> getJailSections() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.executeQuery("SELECT * FROM Section WHERE sectionName LIKE 'Jail-%'");
 
-        ArrayList<Section> allSections = new ArrayList<>();
-        while (rst.next()) {
-            Section section = new Section(
-                    rst.getString("sectionId"),
-                    rst.getString("sectionName"),
-                    rst.getString("location"),
-                    rst.getInt("capacity"),
-                    rst.getString("securityLevel"),
-                    rst.getString("status")
-            );
-            allSections.add(section);
+        try{
+            ResultSet rst = SQLUtil.executeQuery("SELECT * FROM Section WHERE sectionName LIKE 'J-%'");
+
+            ArrayList<Section> allSections = new ArrayList<>();
+            while (rst.next()) {
+                Section section = new Section(
+                        rst.getString("sectionId"),
+                        rst.getString("sectionName"),
+                        rst.getString("location"),
+                        rst.getInt("capacity"),
+                        rst.getString("securityLevel"),
+                        rst.getString("status")
+                );
+                allSections.add(section);
+            }
+            System.out.println(allSections);
+            return allSections;
+        }catch (Exception e){
+            System.out.println(e);
+            e.printStackTrace();
         }
-        return allSections;
+        return null;
 
     }
 }

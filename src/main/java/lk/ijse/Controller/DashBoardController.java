@@ -117,9 +117,9 @@ public class DashBoardController  extends MainDashBoard implements Initializable
         }else {
             scene.setOnKeyPressed(event -> {
                 if (new KeyCodeCombination(KeyCode.I, KeyCombination.CONTROL_DOWN).match(event)) {
-                    System.out.println("click ctrl + d");
+                    System.out.println("click ctrl + i");
                     try {
-                        createStage("/View/InmatePage.fxml");
+                        createStage("/lk/ijse/View/InmatePage.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -127,7 +127,7 @@ public class DashBoardController  extends MainDashBoard implements Initializable
                 if (new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN).match(event)) {
                     System.out.println("click ctrl + o");
                     try {
-                        createStage("/View/OfficerPage.fxml");
+                        createStage("/lk/ijse/View/OfficerPage.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -135,7 +135,7 @@ public class DashBoardController  extends MainDashBoard implements Initializable
                 if (new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_DOWN).match(event)) {
                     System.out.println("click ctrl + v");
                     try {
-                        createStage("/View/VisitorPage.fxml");
+                        createStage("/lk/ijse/View/VisitorPage.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -143,7 +143,7 @@ public class DashBoardController  extends MainDashBoard implements Initializable
                 if (new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN).match(event)) {
                     System.out.println("click ctrl + s");
                     try {
-                        createStage("/View/SectionPage.fxml");
+                        createStage("/lk/ijse/View/SectionPage.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -151,7 +151,7 @@ public class DashBoardController  extends MainDashBoard implements Initializable
                 if (new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN).match(event)) {
                     System.out.println("click ctrl + e");
                     try {
-                        createStage("/View/financialPage.fxml");
+                        createStage("/lk/ijse/View/financialPage.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -314,23 +314,23 @@ public class DashBoardController  extends MainDashBoard implements Initializable
 
 
     public void addInmateBtn(ActionEvent actionEvent) throws IOException {
-        createStage("/View/AddInmate.fxml");
+        createStage("/lk/ijse/View/AddInmate.fxml");
     }
 
     public void addVisitorBtn(ActionEvent actionEvent) throws IOException {
-        createStage("/View/AddVisitor.fxml");
+        createStage("/lk/ijse/View/AddVisitor.fxml");
     }
 
     public void addOfficerBtn(ActionEvent actionEvent) throws IOException {
-        createStage("/View/AddOfficer.fxml");
+        createStage("/lk/ijse/View/AddOfficer.fxml");
     }
 
     public void addSectionBtn(ActionEvent actionEvent) throws IOException {
-        createStage("/View/AddSection.fxml");
+        createStage("/lk/ijse/View/AddSection.fxml");
     }
 
     public void addEncidentBtn(ActionEvent actionEvent) throws IOException {
-        createStage("/View/AddIcident.fxml");
+        createStage("/lk/ijse/View/AddIcident.fxml");
     }
 
     public void searchIdField(ActionEvent actionEvent) {
@@ -339,35 +339,28 @@ public class DashBoardController  extends MainDashBoard implements Initializable
         switch (text){
             case "Inmate":
                 try {
-                    createStage("/View/InmatePage.fxml");
+                    createStage("/lk/ijse/View/InmatePage.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
             case "Officer":
                 try {
-                    createStage("/View/OfficerPage.fxml");
+                    createStage("/lk/ijse/View/OfficerPage.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
             case "Visitor":
                 try {
-                    createStage("/View/VisitorPage.fxml");
+                    createStage("/lk/ijse/View/VisitorPage.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
             case "Section":
                 try {
-                    createStage("/View/SectionPage.fxml");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "Expenses":
-                try {
-                    createStage("/View/financialPage.fxml");
+                    createStage("/lk/ijse/View/SectionPage.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

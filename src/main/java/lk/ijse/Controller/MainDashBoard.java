@@ -10,6 +10,8 @@ import javafx.util.Duration;
 import lk.ijse.Launcher;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
 
 public class MainDashBoard implements MainDashBoardInterFace{
 
@@ -230,19 +232,14 @@ public class MainDashBoard implements MainDashBoardInterFace{
 
     @Override
     public void expensesProfileBtn() throws IOException {
-        createStage("/lk/ijse/View/ExpensesSetting.fxml");
-
+        createStage("/lk/ijse/View/AddExpences.fxml");
     }
 
 
     @Override
     public void createStage(String path) throws IOException {
 
-        StackPane root1 =  new WelcomeController().setStartVideo();
-
-        Scene videoScene = new Scene(root1,1270,650);
-
-
+        System.out.println("path = " + path);
 
         try {
             Stage stage = WelcomeController.getDashBoardStage();
@@ -251,8 +248,12 @@ public class MainDashBoard implements MainDashBoardInterFace{
                 stage = (Stage) new WelcomeController().suMainText1.getScene().getWindow();
             }
 
-
-            Parent root = FXMLLoader.load(getClass().getResource(path));
+            URL resource = getClass().getResource(path);
+            if (resource == null) {
+                System.err.println("FXML file not found: " + path);
+                return;
+            }
+            Parent root = FXMLLoader.load(resource);
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e) {

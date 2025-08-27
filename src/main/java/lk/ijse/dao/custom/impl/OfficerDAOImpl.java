@@ -36,7 +36,7 @@ public class OfficerDAOImpl implements OfficerDAO {
 
     @Override
     public boolean save(Officer dto) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeQuery("INSERT INTO Officer VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        return SQLUtil.executeQuery("INSERT INTO Officer VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
                 dto.getOfficerId(),
                 dto.getOfficerFirstName(),
                 dto.getOfficerLastName(),

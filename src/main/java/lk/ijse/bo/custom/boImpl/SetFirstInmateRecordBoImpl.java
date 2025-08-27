@@ -5,7 +5,6 @@ import lk.ijse.Entity.InmateRecord;
 import lk.ijse.Model.InmateDTO;
 import lk.ijse.Model.InmateRecordDTO;
 import lk.ijse.bo.custom.SetFirstInmateRecordBO;
-import lk.ijse.bo.custom.SetFirstVisitorRecordBO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.InmateDAO;
 import lk.ijse.dao.custom.InmateRecordDAO;
@@ -17,7 +16,6 @@ public class SetFirstInmateRecordBoImpl implements SetFirstInmateRecordBO {
 
     InmateDAO inmateDAO = (InmateDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.INMATE);
     InmateRecordDAO inmateRecordDAO = (InmateRecordDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.INMATE_RECORD);
-    SetFirstVisitorRecordBO setFirstVisitorRecordBO = (SetFirstVisitorRecordBO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.INMATE_RECORD);
 
     @Override
     public boolean setFirstInmateRecord(InmateDTO inmateDTO, InmateRecordDTO inmateRecordDTO) throws Exception {
