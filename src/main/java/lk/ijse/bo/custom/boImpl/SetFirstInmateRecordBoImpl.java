@@ -27,7 +27,7 @@ public class SetFirstInmateRecordBoImpl implements SetFirstInmateRecordBO {
         try {
             connection.setAutoCommit(false);
 
-            boolean isSaved = inmateDAO.save(new Inmate(inmateDTO.getInmateId(), inmateDTO.getInmateFirstName(), inmateDTO.getInmateLastName(), inmateDTO.getInmateDOB(), inmateDTO.getInmateNIC(), inmateDTO.getGender(), inmateDTO.getInmateAddress(), inmateDTO.getStatus(), inmateDTO.getInmateImage()));
+            boolean isSaved = inmateDAO.save(new Inmate(inmateDTO.getInmateId(), inmateDTO.getInmateFirstName(), inmateDTO.getInmateLastName(), inmateDTO.getInmateDOB(), inmateDTO.getInmateNIC(), inmateDTO.getGender(), inmateDTO.getInmateAddress(), inmateDTO.getStatus()));
 
             if (isSaved) {
                 boolean isRecordSaved = inmateRecordDAO.save(new InmateRecord(inmateRecordDTO.getInmateId(),inmateRecordDTO.getSectionId(), inmateRecordDTO.getEntryDate(), inmateRecordDTO.getReleaseDate(), inmateRecordDTO.getCrime(), inmateRecordDTO.getCaseStatus()));
@@ -43,7 +43,13 @@ public class SetFirstInmateRecordBoImpl implements SetFirstInmateRecordBO {
                 connection.rollback();
                 return false;
             }
-        } finally {
+        } catch (Exception e) {
+            connection.rollback();
+            System.out.println("e"+e);
+            throw new RuntimeException(e);
+        }
+
+        finally {
             connection.setAutoCommit(true);
         }
 

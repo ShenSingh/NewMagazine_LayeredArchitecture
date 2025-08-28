@@ -40,7 +40,7 @@ public class QueryDAOImpl implements QueryDao {
             String address = resultSet.getString(7);
             String status = resultSet.getString(8);
 
-            Inmate inmate = new Inmate(id, firstName, lastName, dob, nic, gender, address, status, byte[].class.cast(null));
+            Inmate inmate = new Inmate(id, firstName, lastName, dob, nic, gender, address, status);
             inmates.add(inmate);
         }
         return inmates;
@@ -76,7 +76,7 @@ public class QueryDAOImpl implements QueryDao {
             String address = resultSet.getString(7);
             String status = resultSet.getString(8);
 
-            Inmate inmate = new Inmate(id, firstName, lastName, dob, nic, gender, address, status, byte[].class.cast(null));
+            Inmate inmate = new Inmate(id, firstName, lastName, dob, nic, gender, address, status);
             inmates.add(inmate);
         }
 

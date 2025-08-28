@@ -19,7 +19,7 @@ public class QueryBoImpl implements QuaryBo{
         ArrayList<InmateDTO> activeCaseInmates = new ArrayList<>();
 
         for (Inmate inmate : activeCaseInmate) {
-            activeCaseInmates.add(new InmateDTO(inmate.getInmateId(), inmate.getInmateFirstName(), inmate.getInmateLastName(), inmate.getInmateDOB(), inmate.getInmateNIC(), inmate.getGender(), inmate.getInmateAddress(), inmate.getStatus(), inmate.getInmateImage()));
+            activeCaseInmates.add(new InmateDTO(inmate.getInmateId(), inmate.getInmateFirstName(), inmate.getInmateLastName(), inmate.getInmateDOB(), inmate.getInmateNIC(), inmate.getGender(), inmate.getInmateAddress(), inmate.getStatus()));
         }
         return activeCaseInmates;
     }
@@ -30,7 +30,7 @@ public class QueryBoImpl implements QuaryBo{
         ArrayList<InmateDTO> releaseSoonInmate = new ArrayList<>();
 
         for (Inmate inmate : releaseSoonInmates) {
-            releaseSoonInmate.add(new InmateDTO(inmate.getInmateId(), inmate.getInmateFirstName(), inmate.getInmateLastName(), inmate.getInmateDOB(), inmate.getInmateNIC(), inmate.getGender(), inmate.getInmateAddress(), inmate.getStatus(), inmate.getInmateImage()));
+            releaseSoonInmate.add(new InmateDTO(inmate.getInmateId(), inmate.getInmateFirstName(), inmate.getInmateLastName(), inmate.getInmateDOB(), inmate.getInmateNIC(), inmate.getGender(), inmate.getInmateAddress(), inmate.getStatus()));
         }
         return releaseSoonInmate;
     }

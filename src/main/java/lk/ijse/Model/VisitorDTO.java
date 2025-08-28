@@ -23,5 +23,4 @@ public class VisitorDTO implements Serializable {
     private String visitorAddress;
     private String visitorType;
     private String gender;
-    private byte[] visitorImage;
 }

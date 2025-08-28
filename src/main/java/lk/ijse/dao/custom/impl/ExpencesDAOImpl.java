@@ -81,35 +81,26 @@ public class ExpencesDAOImpl implements ExpencesDAO {
 
     @Override
     public Map<String, Double> getTotalCostByType() throws SQLException, ClassNotFoundException {
-        String yearAndMonth = "2024/6"; // Example: "YYYY/MM"
+        String yearAndMonth = "2025/6"; // Example: "YYYY/MM"
 
-        // Parse the year and month
         String[] parts = yearAndMonth.split("/");
         int year = Integer.parseInt(parts[0]);
         int month = Integer.parseInt(parts[1]);
 
-        // Subtract one from the year to get the previous year
         int previousYear = year - 1;
-
-        // Construct a new string for the previous year
         String previousYearAndMonth = previousYear + "/" + month;
 
         ResultSet resultSet = SQLUtil.executeQuery("SELECT type, SUM(cost) AS total_cost FROM Expences WHERE month LIKE ? GROUP BY type");
 
-        // Map to store total expenses for each expense type
         Map<String, Double> expensesByType = new HashMap<>();
 
-        // Process the result set
         while (resultSet.next()) {
-            // Retrieve expense type and total cost
             String expenseType = resultSet.getString("type");
             double totalCost = resultSet.getDouble("total_cost");
 
-            // Store total cost for the expense type
             expensesByType.put(expenseType, totalCost);
         }
 
-        // Print total expenses for each expense type
         for (Map.Entry<String, Double> entry : expensesByType.entrySet()) {
             System.out.println("Expense Type: " + entry.getKey() + ", Total Cost: " + entry.getValue());
         }

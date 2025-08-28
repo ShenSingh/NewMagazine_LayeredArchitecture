@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="/lk/ijse/css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AddVisitorController">
+<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="/lk/ijse/css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AddVisitorController">
    <children>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="12.0" layoutY="103.0">
          <image>
@@ -185,7 +185,6 @@
          </cursor>
       </Button>
       <Button fx:id="visitorBtn" layoutX="-2.0" layoutY="208.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="55.0" styleClass="manuBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css">
-         <onAction>#onVisitor</onAction>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -328,12 +327,7 @@
             <Font name="Kinnari Bold" size="18.0" />
          </font>
       </JFXButton>
-      <Button layoutX="593.0" layoutY="556.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="133.0" styleClass="submitBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css" text="Create QR">
-         <font>
-            <Font name="Kinnari Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="785.0" layoutY="555.0" mnemonicParsing="false" onAction="#takePhotoBtn" prefHeight="45.0" prefWidth="133.0" styleClass="submitBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css" text="Take Photo">
+      <Button layoutX="593.0" layoutY="556.0" mnemonicParsing="false" onAction="#createQr" prefHeight="45.0" prefWidth="133.0" styleClass="submitBtn" stylesheets="/lk/ijse/css/dashBoardStyle.css" text="Create QR">
          <font>
             <Font name="Kinnari Bold" size="18.0" />
          </font>

@@ -18,19 +18,19 @@ public class InmateBoImpl implements InmateBO {
         ArrayList<InmateDTO> allInmates = new ArrayList<>();
 
         for (Inmate inmate : allInmate) {
-            allInmates.add(new InmateDTO(inmate.getInmateId(),inmate.getInmateFirstName(),inmate.getInmateLastName(),inmate.getInmateDOB(),inmate.getInmateNIC(),inmate.getGender(),inmate.getInmateAddress(),inmate.getStatus(),inmate.getInmateImage()));
+            allInmates.add(new InmateDTO(inmate.getInmateId(),inmate.getInmateFirstName(),inmate.getInmateLastName(),inmate.getInmateDOB(),inmate.getInmateNIC(),inmate.getGender(),inmate.getInmateAddress(),inmate.getStatus()));
         }
         return allInmates;
     }
 
     @Override
     public boolean saveInmate(InmateDTO inmateDTO) throws SQLException, ClassNotFoundException {
-        return inmateDAO.save(new Inmate(inmateDTO.getInmateId(),inmateDTO.getInmateFirstName(),inmateDTO.getInmateLastName(),inmateDTO.getInmateDOB(),inmateDTO.getInmateNIC(),inmateDTO.getGender(),inmateDTO.getInmateAddress(),inmateDTO.getStatus(),inmateDTO.getInmateImage()));
+        return inmateDAO.save(new Inmate(inmateDTO.getInmateId(),inmateDTO.getInmateFirstName(),inmateDTO.getInmateLastName(),inmateDTO.getInmateDOB(),inmateDTO.getInmateNIC(),inmateDTO.getGender(),inmateDTO.getInmateAddress(),inmateDTO.getStatus()));
     }
 
     @Override
     public void updateInmate(InmateDTO inmateDTO) throws SQLException, ClassNotFoundException {
-        inmateDAO.update(new Inmate(inmateDTO.getInmateId(),inmateDTO.getInmateFirstName(),inmateDTO.getInmateLastName(),inmateDTO.getInmateDOB(),inmateDTO.getInmateNIC(),inmateDTO.getGender(),inmateDTO.getInmateAddress(),inmateDTO.getStatus(),inmateDTO.getInmateImage()));
+        inmateDAO.update(new Inmate(inmateDTO.getInmateId(),inmateDTO.getInmateFirstName(),inmateDTO.getInmateLastName(),inmateDTO.getInmateDOB(),inmateDTO.getInmateNIC(),inmateDTO.getGender(),inmateDTO.getInmateAddress(),inmateDTO.getStatus()));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class InmateBoImpl implements InmateBO {
     public InmateDTO searchInmate(String id) throws SQLException, ClassNotFoundException {
         Inmate inmate = inmateDAO.search(id);
 
-        return new InmateDTO(inmate.getInmateId(), inmate.getInmateFirstName(), inmate.getInmateLastName(), inmate.getInmateDOB(), inmate.getInmateNIC(), inmate.getGender(), inmate.getInmateAddress(), inmate.getStatus(), inmate.getInmateImage());
+        return new InmateDTO(inmate.getInmateId(), inmate.getInmateFirstName(), inmate.getInmateLastName(), inmate.getInmateDOB(), inmate.getInmateNIC(), inmate.getGender(), inmate.getInmateAddress(), inmate.getStatus());
     }
 
     @Override

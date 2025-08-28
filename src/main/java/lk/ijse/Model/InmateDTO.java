@@ -22,5 +22,4 @@ public class InmateDTO implements Serializable {
     private String gender;
     private String inmateAddress;
     private String status;
-    private byte[] inmateImage;
 }

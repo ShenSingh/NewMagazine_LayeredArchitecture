@@ -24,8 +24,7 @@ public class InmateDAOImpl implements InmateDAO {
                     rst.getString("inmateNIC"),
                     rst.getString("gender"),
                     rst.getString("inmateAddress"),
-                    rst.getString("status"),
-                    rst.getBytes("inmateImage")
+                    rst.getString("status")
                     );
             getAllInmate.add(entity);
         }
@@ -42,8 +41,7 @@ public class InmateDAOImpl implements InmateDAO {
                 dto.getInmateNIC(),
                 dto.getGender(),
                 dto.getInmateAddress(),
-                dto.getStatus(),
-                dto.getInmateImage());
+                dto.getStatus());
     }
 
     @Override
@@ -56,7 +54,6 @@ public class InmateDAOImpl implements InmateDAO {
                 dto.getGender(),
                 dto.getInmateAddress(),
                 dto.getStatus(),
-                dto.getInmateImage(),
                 dto.getInmateId());
     }
 
@@ -87,8 +84,7 @@ public class InmateDAOImpl implements InmateDAO {
                 resultSet.getString("inmateNIC"),
                 resultSet.getString("gender"),
                 resultSet.getString("inmateAddress"),
-                resultSet.getString("status"),
-                resultSet.getBytes("inmateImage")
+                resultSet.getString("status")
         );
     }
 
@@ -109,7 +105,7 @@ public class InmateDAOImpl implements InmateDAO {
             if (!inmate.getGender().equals(genderType)){
                 continue;
             }
-            allInmates.add(new InmateDTO(inmate.getInmateId(),inmate.getInmateFirstName(),inmate.getInmateLastName(),inmate.getInmateDOB(),inmate.getInmateNIC(),inmate.getGender(),inmate.getInmateAddress(),inmate.getStatus(),inmate.getInmateImage()));
+            allInmates.add(new InmateDTO(inmate.getInmateId(),inmate.getInmateFirstName(),inmate.getInmateLastName(),inmate.getInmateDOB(),inmate.getInmateNIC(),inmate.getGender(),inmate.getInmateAddress(),inmate.getStatus()));
         }
         return allInmates;
     }
@@ -124,7 +120,7 @@ public class InmateDAOImpl implements InmateDAO {
             if (!inmate.getStatus().equals("Active")){
                 continue;
             }
-            allInmates.add(new InmateDTO(inmate.getInmateId(),inmate.getInmateFirstName(),inmate.getInmateLastName(),inmate.getInmateDOB(),inmate.getInmateNIC(),inmate.getGender(),inmate.getInmateAddress(),inmate.getStatus(),inmate.getInmateImage()));
+            allInmates.add(new InmateDTO(inmate.getInmateId(),inmate.getInmateFirstName(),inmate.getInmateLastName(),inmate.getInmateDOB(),inmate.getInmateNIC(),inmate.getGender(),inmate.getInmateAddress(),inmate.getStatus()));
         }
         return allInmates;
     }

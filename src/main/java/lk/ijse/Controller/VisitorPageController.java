@@ -346,8 +346,8 @@ public class VisitorPageController extends MainDashBoard implements Initializabl
     }
 
 
-    public void scanQrBtn(ActionEvent actionEvent) throws ChecksumException, FormatException, SQLException, ClassNotFoundException {
-        String searchVisitorId = QRCodeScanner.qrScanner();
+    public void scanQrBtn(String id) throws Exception {
+        String searchVisitorId = id;
 
         if (searchVisitorId != null){
             VisitorDTO visitor = visitorBO.searchVisitor(searchVisitorId);
@@ -427,5 +427,13 @@ public class VisitorPageController extends MainDashBoard implements Initializabl
         String visitorId = visitorIdFieldTxt.getText().split(" - ")[0];
         SearchId.setVisitorId(visitorId);
         createStage("/View/VisitorProfile.fxml");
+    }
+
+    public void visitorIdAction(ActionEvent actionEvent) throws Exception {
+        if (visitorId.getText() != null){
+            scanQrBtn(visitorId.getText());
+        }else {
+            ShowAlert.showErrorNotify("Please Enter Visitor ID");
+        }
     }
 }

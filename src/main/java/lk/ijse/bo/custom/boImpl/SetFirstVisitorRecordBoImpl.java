@@ -28,7 +28,7 @@ public class SetFirstVisitorRecordBoImpl implements SetFirstVisitorRecordBO {
         try {
             connection.setAutoCommit(false);
 
-            boolean isSaved = visitorDAO.save(new Visitor(visitorDTO.getVisitorID(), visitorDTO.getVisitorFirstName(), visitorDTO.getVisitorLastName(), visitorDTO.getVisitorDOB(), visitorDTO.getVisitorNIC(), visitorDTO.getVisitorNumber(), visitorDTO.getVisitorAddress(), visitorDTO.getVisitorType(), visitorDTO.getGender(), visitorDTO.getVisitorImage()));
+            boolean isSaved = visitorDAO.save(new Visitor(visitorDTO.getVisitorID(), visitorDTO.getVisitorFirstName(), visitorDTO.getVisitorLastName(), visitorDTO.getVisitorDOB(), visitorDTO.getVisitorNIC(), visitorDTO.getVisitorNumber(), visitorDTO.getVisitorAddress(), visitorDTO.getVisitorType(), visitorDTO.getGender()));
 
             if (isSaved) {
                 boolean isRecordSaved = visitorRecordDAO.save(new VisitorRecord(visitorRecordDTO.getVisitorRecordId(), visitorRecordDTO.getVisitorId(), visitorRecordDTO.getInmateId(), visitorRecordDTO.getVisitDate(), visitorRecordDTO.getVisitTime()));

@@ -26,9 +26,7 @@ public class VisitorDAOImpl implements VisitorDAO {
                     rst.getInt("visitorNumber"),
                     rst.getString("visitorAddress"),
                     rst.getString("visitorType"),
-                    rst.getString("gender"),
-                    rst.getBytes("imageData")
-
+                    rst.getString("gender")
                     );
             allVisitors.add(visitor);
         }
@@ -37,23 +35,22 @@ public class VisitorDAOImpl implements VisitorDAO {
 
     @Override
     public boolean save(Visitor dto) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeQuery("INSERT INTO Visitor VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+        return SQLUtil.executeQuery("INSERT INTO Visitor VALUES (?,?,?,?,?,?,?,?,?)",
                 dto.getVisitorID(),
                 dto.getVisitorFirstName(),
                 dto.getVisitorLastName(),
                 dto.getVisitorDOB(),
                 dto.getVisitorNIC(),
-                dto.getGender(),
                 dto.getVisitorNumber(),
                 dto.getVisitorAddress(),
                 dto.getVisitorType(),
-                dto.getVisitorImage()
+                dto.getGender()
         );
     }
 
     @Override
     public boolean update(Visitor dto) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeQuery("UPDATE Visitor SET visitorFirstName=?, visitorLastName=?, visitorDOB=?, visitorNIC=?, gender=?, visitorNumber=?, visitorAddress=?, visitorType=?, visitorImage=? WHERE visitorID=?",
+        return SQLUtil.executeQuery("UPDATE Visitor SET visitorFirstName=?, visitorLastName=?, visitorDOB=?, visitorNIC=?, gender=?, visitorNumber=?, visitorAddress=?, visitorType=? WHERE visitorID=?",
                 dto.getVisitorFirstName(),
                 dto.getVisitorLastName(),
                 dto.getVisitorDOB(),
@@ -62,7 +59,6 @@ public class VisitorDAOImpl implements VisitorDAO {
                 dto.getVisitorNumber(),
                 dto.getVisitorAddress(),
                 dto.getVisitorType(),
-                dto.getVisitorImage(),
                 dto.getVisitorID()
         );
     }
@@ -95,8 +91,7 @@ public class VisitorDAOImpl implements VisitorDAO {
                     rst.getInt("visitorNumber"),
                     rst.getString("visitorAddress"),
                     rst.getString("visitorType"),
-                    rst.getString("gender"),
-                    rst.getBytes("visitorImage")
+                    rst.getString("gender")
             );
         }
         return null;
@@ -125,7 +120,7 @@ public class VisitorDAOImpl implements VisitorDAO {
             String visitorType = resultSet.getString(8);
             String gender = resultSet.getString(9);
             byte[] visitorImage = resultSet.getBytes(10);
-            Visitor visitor = new Visitor(visitorId, visitorFirstName, visitorLastName, visitorDOB, visitorNIC, visitorNumber, visitorAddress, visitorType, gender,visitorImage);
+            Visitor visitor = new Visitor(visitorId, visitorFirstName, visitorLastName, visitorDOB, visitorNIC, visitorNumber, visitorAddress, visitorType, gender);
 
             allVisitors.add(visitor);
         }

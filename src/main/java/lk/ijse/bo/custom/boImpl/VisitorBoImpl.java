@@ -20,19 +20,19 @@ public class VisitorBoImpl implements VisitorBO {
         ArrayList<VisitorDTO> allVisitors = new ArrayList<>();
 
         for (Visitor visitor : allVisitor) {
-            allVisitors.add(new VisitorDTO(visitor.getVisitorID(),visitor.getVisitorFirstName(),visitor.getVisitorLastName(),visitor.getVisitorDOB(),visitor.getVisitorNIC(),visitor.getVisitorNumber(),visitor.getVisitorAddress(),visitor.getVisitorType(),visitor.getGender(),visitor.getVisitorImage()));
+            allVisitors.add(new VisitorDTO(visitor.getVisitorID(),visitor.getVisitorFirstName(),visitor.getVisitorLastName(),visitor.getVisitorDOB(),visitor.getVisitorNIC(),visitor.getVisitorNumber(),visitor.getVisitorAddress(),visitor.getVisitorType(),visitor.getGender()));
         }
         return allVisitors;
     }
 
     @Override
     public boolean saveVisitor(VisitorDTO visitorDTO) throws SQLException, ClassNotFoundException {
-        return visitorDAO.save(new Visitor(visitorDTO.getVisitorID(),visitorDTO.getVisitorFirstName(),visitorDTO.getVisitorLastName(),visitorDTO.getVisitorDOB(),visitorDTO.getVisitorNIC(),visitorDTO.getVisitorNumber(),visitorDTO.getVisitorAddress(),visitorDTO.getVisitorType(),visitorDTO.getGender(),visitorDTO.getVisitorImage()));
+        return visitorDAO.save(new Visitor(visitorDTO.getVisitorID(),visitorDTO.getVisitorFirstName(),visitorDTO.getVisitorLastName(),visitorDTO.getVisitorDOB(),visitorDTO.getVisitorNIC(),visitorDTO.getVisitorNumber(),visitorDTO.getVisitorAddress(),visitorDTO.getVisitorType(),visitorDTO.getGender()));
     }
 
     @Override
     public void updateVisitor(VisitorDTO visitorDTO) throws SQLException, ClassNotFoundException {
-        visitorDAO.update(new Visitor(visitorDTO.getVisitorID(),visitorDTO.getVisitorFirstName(),visitorDTO.getVisitorLastName(),visitorDTO.getVisitorDOB(),visitorDTO.getVisitorNIC(),visitorDTO.getVisitorNumber(),visitorDTO.getVisitorAddress(),visitorDTO.getVisitorType(),visitorDTO.getGender(),visitorDTO.getVisitorImage()));
+        visitorDAO.update(new Visitor(visitorDTO.getVisitorID(),visitorDTO.getVisitorFirstName(),visitorDTO.getVisitorLastName(),visitorDTO.getVisitorDOB(),visitorDTO.getVisitorNIC(),visitorDTO.getVisitorNumber(),visitorDTO.getVisitorAddress(),visitorDTO.getVisitorType(),visitorDTO.getGender()));
     }
 
     @Override
@@ -63,7 +63,7 @@ public class VisitorBoImpl implements VisitorBO {
     @Override
     public VisitorDTO searchVisitor(String searchVisitorId) throws SQLException, ClassNotFoundException {
         Visitor visitor = visitorDAO.search(searchVisitorId);
-        return new VisitorDTO(visitor.getVisitorID(),visitor.getVisitorFirstName(),visitor.getVisitorLastName(),visitor.getVisitorDOB(),visitor.getVisitorNIC(),visitor.getVisitorNumber(),visitor.getVisitorAddress(),visitor.getVisitorType(),visitor.getGender(),visitor.getVisitorImage());
+        return new VisitorDTO(visitor.getVisitorID(),visitor.getVisitorFirstName(),visitor.getVisitorLastName(),visitor.getVisitorDOB(),visitor.getVisitorNIC(),visitor.getVisitorNumber(),visitor.getVisitorAddress(),visitor.getVisitorType(),visitor.getGender());
     }
 
     @Override
@@ -72,7 +72,7 @@ public class VisitorBoImpl implements VisitorBO {
         ArrayList<VisitorDTO> visitorDTOS = new ArrayList<>();
 
         for (Visitor visitor : visitors) {
-            visitorDTOS.add(new VisitorDTO(visitor.getVisitorID(),visitor.getVisitorFirstName(),visitor.getVisitorLastName(),visitor.getVisitorDOB(),visitor.getVisitorNIC(),visitor.getVisitorNumber(),visitor.getVisitorAddress(),visitor.getVisitorType(),visitor.getGender(),visitor.getVisitorImage()));
+            visitorDTOS.add(new VisitorDTO(visitor.getVisitorID(),visitor.getVisitorFirstName(),visitor.getVisitorLastName(),visitor.getVisitorDOB(),visitor.getVisitorNIC(),visitor.getVisitorNumber(),visitor.getVisitorAddress(),visitor.getVisitorType(),visitor.getGender()));
         }
         return visitorDTOS;
     }

@@ -82,14 +82,11 @@ public class AddInmateController extends MainDashBoard implements Initializable 
     public Button manyBtn;
     public Button sectionBtn;
     public Button visitorBtn;
-
-    private byte[] imageDate;
     public static String inmateIdForSearch;
 
     InmateBO inmateBO = (InmateBO) BoFactory.getInstance().getBo(BoFactory.BoTypes.INMATE);
     SectionBO sectionBO = (SectionBO) BoFactory.getInstance().getBo(BoFactory.BoTypes.SECTION);
     SetFirstInmateRecordBO setFirstInmateRecordBO = (SetFirstInmateRecordBO) BoFactory.getInstance().getBo(BoFactory.BoTypes.SET_FIRST_INMATE_RECORD);
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -196,7 +193,7 @@ public class AddInmateController extends MainDashBoard implements Initializable 
         inmateGender.getItems().addAll("Male", "Female", "Transgender");
         inmateStatus.getItems().addAll("Active", "Inactive");
 
-        List<SectionDTO> jailSections = sectionBO.getJailSections();
+        List<SectionDTO> jailSections = sectionBO.getAllSection();
 
         for (SectionDTO section : jailSections){
             inRecoSectionId.getItems().add(section.getSectionId());
@@ -214,12 +211,8 @@ public class AddInmateController extends MainDashBoard implements Initializable 
     @FXML
     public void submitBtn(ActionEvent actionEvent) throws Exception {
         if (checkEmptyFields()) {
-            if(imageDate.length != 0){}else {
-                ShowAlert.showErrorNotify("Please Capture Image");
-                return;
-            }
 
-            InmateDTO inmate = new InmateDTO(inmateId.getText(), inmateFName.getText(), inmateLName.getText(), inmateDOB.getValue(),inmateNIC.getText(), inmateGender.getSelectionModel().getSelectedItem(), inmateAddress.getText(), inmateStatus.getSelectionModel().getSelectedItem(),imageDate);
+            InmateDTO inmate = new InmateDTO(inmateId.getText(), inmateFName.getText(), inmateLName.getText(), inmateDOB.getValue(),inmateNIC.getText(), inmateGender.getSelectionModel().getSelectedItem(), inmateAddress.getText(), inmateStatus.getSelectionModel().getSelectedItem());
             InmateRecordDTO inmateRecord = new InmateRecordDTO( inmateId.getText(),inRecoSectionId.getSelectionModel().getSelectedItem() , Date.valueOf(LocalDate.now()), Date.valueOf(inRecoReleseDate.getValue()),inRecoCrime.getText() ,caseStatusComboBox.getSelectionModel().getSelectedItem());
 
             if (setFirstInmateRecordBO.setFirstInmateRecord(inmate, inmateRecord)) {
@@ -268,44 +261,6 @@ public class AddInmateController extends MainDashBoard implements Initializable 
     }
     public static String getInmateIdForSearch() {
         return inmateIdForSearch;
-    }
-    public void takeImageBtn(ActionEvent actionEvent) {
-        try {
-            captureImage();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void captureImage() throws IOException {
-        try {
-            ProcessBuilder builder = new ProcessBuilder("python3","pyCapturePhoto/app.py");
-            builder.redirectErrorStream(true);
-            Process process = builder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String imagepath = null;
-            String line;
-            while ((line = reader.readLine()) != null) {
-                imagepath = line;
-            }
-            int exitCode = process.waitFor();
-            File file = new File(imagepath);
-            this.imageDate = Util.readImage(file);
-
-            showImage(imageDate);
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-    private void showImage(byte[] imageDate) {
-        Image image = Util.showImage(imageDate);
-        Alert qrCodeAlert = new Alert(Alert.AlertType.INFORMATION);
-        qrCodeAlert.setTitle("Inmate Image");
-        qrCodeAlert.setHeaderText("Inmate Profile Image");
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(300);
-        imageView.setFitHeight(300);
-        qrCodeAlert.getDialogPane().setContent(imageView);
-        qrCodeAlert.showAndWait();
     }
 
     public void inmateIdOnAction(ActionEvent actionEvent) {

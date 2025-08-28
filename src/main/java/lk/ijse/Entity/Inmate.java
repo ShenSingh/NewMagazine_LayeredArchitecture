@@ -17,7 +17,4 @@ public class Inmate {
     private String gender;
     private String inmateAddress;
     private String status;
-    private byte[] inmateImage;
-
-
 }

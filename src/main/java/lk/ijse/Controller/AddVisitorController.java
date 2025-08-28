@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.Controller.Util.Alert.ShowAlert;
 import lk.ijse.Controller.Util.FlogQRCode.QRCodeGenerator;
@@ -42,12 +43,11 @@ import java.util.ResourceBundle;
 
 public class AddVisitorController extends MainDashBoard implements Initializable {
 
+    public AnchorPane MainAnchorPane;
     VisitorBO visitorBO = BoFactory.getInstance().getBo(BoFactory.BoTypes.VISITOR);
     InmateBO inmateBO = BoFactory.getInstance().getBo(BoFactory.BoTypes.INMATE);
     VisitorRecordBO visitorRecordBO = BoFactory.getInstance().getBo(BoFactory.BoTypes.VISITOR_RECORD);
-    SetFirstVisitorRecordBO setFirstVisitorRecordBO = (SetFirstVisitorRecordBO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.INMATE_RECORD);
-
-
+    SetFirstVisitorRecordBO setFirstVisitorRecordBO = BoFactory.getInstance().getBo(BoFactory.BoTypes.SET_FIRST_VISITOR_RECORD);
     @FXML
     private TextField visitorId;
     @FXML
@@ -202,7 +202,7 @@ public class AddVisitorController extends MainDashBoard implements Initializable
 
 //            String visitorId = PasswordHasher.hashPassword(newVisitorId);
 
-                String filePath = "src/main/resources/QRCodeStore/"+newVisitorId+".png";
+                String filePath = "src/main/resources/lk/ijse/QRCodeStore/"+newVisitorId+".png";
                 boolean isGenerated = QRCodeGenerator.generateQRCode(newVisitorId,newVisitorId);
                 if (isGenerated){
                     path = filePath;
@@ -329,7 +329,7 @@ public class AddVisitorController extends MainDashBoard implements Initializable
         JasperDesign design = null;
 
         try {
-            design = JRXmlLoader.load("src/main/resources/Reports/visitor_Visit_Pass_.jrxml");
+            design = JRXmlLoader.load("src/main/resources/lk/ijse/Report/visitor_Visit_Pass_.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(design);
 
             HashMap<String, Object> parameters = new HashMap<>();
@@ -368,10 +368,6 @@ public class AddVisitorController extends MainDashBoard implements Initializable
 
     private VisitorDTO createVisitorObject() {
         if (checkEmptyFields()){
-            if (imageDate == null){
-                ShowAlert.showErrorNotify("Please Capture Image");
-                return null;
-            }
             String newVisitorId = visitorId.getText();
             String newFName = fName.getText();
             String newLName = lName.getText();
@@ -386,7 +382,7 @@ public class AddVisitorController extends MainDashBoard implements Initializable
             String newGender=gender.getSelectionModel().getSelectedItem();
             String newVisitorType=visitorType.getSelectionModel().getSelectedItem();
 
-            VisitorDTO newVisitor = new VisitorDTO(newVisitorId,newFName,newLName,newDOB,newNIC,newNumber,newAddress,newVisitorType,newGender,imageDate);
+            VisitorDTO newVisitor = new VisitorDTO(newVisitorId,newFName,newLName,newDOB,newNIC,newNumber,newAddress,newVisitorType,newGender);
             return newVisitor;
         }else{
             ShowAlert.showErrorNotify("Please Fill All Fields");

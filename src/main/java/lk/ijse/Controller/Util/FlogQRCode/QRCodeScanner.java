@@ -1,71 +1,39 @@
-package lk.ijse.Controller.Util.FlogQRCode;
-
-import com.github.sarxos.webcam.Webcam;
-import com.github.sarxos.webcam.WebcamPanel;
+package lk.ijse.Controller.Util.FlogQRCode;// Java
+import org.bytedeco.javacv.*;
+import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.global.opencv_imgcodecs;
 import com.google.zxing.*;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 
-import javax.swing.*;
 import java.awt.image.BufferedImage;
 
 public class QRCodeScanner {
+    public static String qrScanner() throws Exception {
+        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0);
+        grabber.start();
 
-    public static void main(String[] args) {
-        try {
-            qrScanner();
-        } catch (ChecksumException e) {
-            throw new RuntimeException(e);
-        } catch (FormatException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static String qrScanner() throws ChecksumException, FormatException {
-        Webcam webcam = Webcam.getDefault();
-
-        String totalResult = null;
-
-        // Create a JFrame for webcam display
-        JFrame frame = new JFrame("QR Code Scanner");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-
-
-        // Create a panel to display webcam feed
-        WebcamPanel panel = new WebcamPanel(webcam);
-        panel.setMirrored(true);
-
-        // Add webcam panel to the frame
-        frame.add(panel);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setSize(630, 480);
-
-        // Start capturing images from the webcam
-        webcam.open();
-
-        // Continuously scan for QR codes
         while (true) {
-            BufferedImage image = webcam.getImage();
-            if (image != null) {
-                try {
+            Frame frame = grabber.grab();
+            if (frame != null) {
+                Java2DFrameConverter converter = new Java2DFrameConverter();
+                BufferedImage image = converter.convert(frame);
+
+                if (image != null) {
                     LuminanceSource source = new BufferedImageLuminanceSource(image);
                     BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
                     Reader reader = new MultiFormatReader();
-                    Result result = reader.decode(bitmap);
-                    if (result != null) {
-                        System.out.println("QR Code Content: " + result.getText());
-                        totalResult = result.getText();
-                        webcam.close();
-                        frame.setVisible(false);
-                        return totalResult;
+                    try {
+                        Result result = reader.decode(bitmap);
+                        if (result != null) {
+                            grabber.stop();
+                            return result.getText();
+                        }
+                    } catch (NotFoundException e) {
+                        // No QR code found in this frame
                     }
-                } catch (NotFoundException e) {
-
                 }
             }
         }
     }
 }
-

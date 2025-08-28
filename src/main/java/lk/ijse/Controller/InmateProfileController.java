@@ -41,8 +41,6 @@ public class InmateProfileController extends  MainDashBoard implements Initializ
     public TableColumn<InmateRecordDTO, String> IPCaseStatus;
     public TableColumn<InmateRecordDTO, String> IPCrime;
     public AnchorPane MainAnchorPane;
-    public ImageView inmateImg;
-
 
     @FXML
     private AnchorPane iconsPane;
@@ -232,14 +230,6 @@ public class InmateProfileController extends  MainDashBoard implements Initializ
                 this.address.setText(inmate.getInmateAddress());
                 this.status.getSelectionModel().select(inmate.getStatus());
 
-                inmateImg.setFitWidth(100);
-                inmateImg.setFitHeight(100);
-                Circle clip = new Circle(inmateImg.getFitWidth() / 2, inmateImg.getFitHeight() / 2, inmateImg.getFitWidth() / 2);
-                inmateImg.setClip(clip);
-
-                Image image = Util.showImage(inmate.getInmateImage());
-                inmateImg.setImage(image);
-
             }else{
                 ShowAlert.showErrorNotify("Inmate not found");
             }
@@ -278,14 +268,6 @@ public class InmateProfileController extends  MainDashBoard implements Initializ
                 this.gender.getSelectionModel().select(inmate.getGender());
                 this.address.setText(inmate.getInmateAddress());
                 this.status.getSelectionModel().select(inmate.getStatus());
-
-                inmateImg.setFitWidth(100);
-                inmateImg.setFitHeight(100);
-                Circle clip = new Circle(inmateImg.getFitWidth() / 2, inmateImg.getFitHeight() / 2, inmateImg.getFitWidth() / 2);
-                inmateImg.setClip(clip);
-
-                Image image = Util.showImage(inmate.getInmateImage());
-                inmateImg.setImage(image);
 
             }else{
                 ShowAlert.showErrorNotify("Inmate not found");
@@ -374,16 +356,7 @@ public class InmateProfileController extends  MainDashBoard implements Initializ
             String address = this.address.getText();
             String status = this.status.getSelectionModel().getSelectedItem();
 
-            byte[] imageData = new byte[0];
-            try {
-                imageData = inmateBO.searchInmate(inmateId).getInmateImage();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-
-            InmateDTO inmate = new InmateDTO(inmateId, fName, lName,DOB, NIC, Gender, address, status,imageData);
+            InmateDTO inmate = new InmateDTO(inmateId, fName, lName,DOB, NIC, Gender, address, status);
 
             try {
                 inmateBO.updateInmate(inmate);

@@ -22,7 +22,7 @@ public class QRCodeGenerator {
         int height = 300;
 
         boolean isGenerated;
-        String filePath = "src/main/resources/QRCodeStore/"+visitorId+".png";
+        String filePath = "src/main/resources/lk/ijse/QRCodeStore/"+visitorId+".png";
         try {
             // Encode text content into QR code
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
