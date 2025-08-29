@@ -257,7 +257,7 @@ public class AddInmateController extends MainDashBoard implements Initializable 
     }
     public void inmateSearchOnAction(ActionEvent actionEvent) throws IOException {
         inmateIdForSearch = inmateSearchId.getText();
-        createStage("/View/InmateProfile.fxml");
+        createStage("/lk/ijse/View/InmateProfile.fxml");
     }
     public static String getInmateIdForSearch() {
         return inmateIdForSearch;

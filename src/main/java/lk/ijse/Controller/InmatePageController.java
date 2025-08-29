@@ -118,7 +118,7 @@ public class InmatePageController extends MainDashBoard implements Initializable
                 if (new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN).match(event)) {
                     System.out.println("click ctrl + d");
                     try {
-                        createStage("/View/DashBoard.fxml");
+                        createStage("lk/ijse/View/DashBoard.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -126,7 +126,7 @@ public class InmatePageController extends MainDashBoard implements Initializable
                 if (new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN).match(event)) {
                     System.out.println("click ctrl + o");
                     try {
-                        createStage("/View/OfficerPage.fxml");
+                        createStage("lk/ijse/View/OfficerPage.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -261,7 +261,8 @@ public class InmatePageController extends MainDashBoard implements Initializable
     public void searchIdField(ActionEvent actionEvent) throws IOException {
         String id = searchId.getText().split(" - ")[0];
         SearchId.setInmateId(id);
-        createStage("/View/InmateProfile.fxml");
+        createStage("/lk/ijse/View/InmateProfile.fxml");
+
     }
 
 

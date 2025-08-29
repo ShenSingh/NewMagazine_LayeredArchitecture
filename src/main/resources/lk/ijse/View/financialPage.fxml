@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="/lk/ijse/css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.FinancialPageController">
+<AnchorPane fx:id="MainAnchorPane" prefHeight="630.0" prefWidth="1265.0" styleClass="mainAnchorPane" stylesheets="/lk/ijse/css/dashBoardStyle.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.FinancialPageController">
    <children>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="12.0" layoutY="103.0">
          <image>
@@ -64,44 +64,6 @@
                   <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="9.0" layoutY="12.0">
                      <image>
                         <Image url="@../images/icon/addDollar.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="34.0" layoutY="152.0" prefHeight="70.0" prefWidth="150.0" styleClass="categoryAnchor">
-               <children>
-                  <Text fill="#000000c4" layoutX="69.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categoryText" text="Remove Expenses" wrappingWidth="75.0">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="deleteInmate" layoutX="5.0" layoutY="9.0" mnemonicParsing="false" onAction="#onDeleteExpencesBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="8.0" layoutY="15.0">
-                     <image>
-                        <Image url="@../images/icon/deleteDollar.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="34.0" layoutY="237.0" prefHeight="70.0" prefWidth="150.0" styleClass="categoryAnchor">
-               <children>
-                  <Text fill="#000000c4" layoutX="69.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categoryText" text="Update Expenses" wrappingWidth="75.0">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="updateInmate" layoutX="5.0" layoutY="9.0" mnemonicParsing="false" onAction="#onUpdateExpencesBtn" prefHeight="50.0" prefWidth="140.0" styleClass="cateManuBtn" stylesheets="@../lk/ijse/Alert/css/dashBoardStyle.css">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="10.0" layoutY="13.0">
-                     <image>
-                        <Image url="@../images/icon/updateDollar.png" />
                      </image>
                   </ImageView>
                </children>

@@ -292,7 +292,7 @@ public class InmateProfileController extends  MainDashBoard implements Initializ
     }
 
     public void inInmateProfileBtn(ActionEvent actionEvent) throws IOException {
-        super.createStage("/View/InmateProfile.fxml");
+        super.createStage("/lk/ijse/View/InmateProfile.fxml");
     }
 
     public void inDeleteInmate(ActionEvent actionEvent) {

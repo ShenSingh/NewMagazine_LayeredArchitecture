@@ -118,7 +118,7 @@ public class OfficerPageController extends MainDashBoard implements Initializabl
                 if (new KeyCodeCombination(KeyCode.I, KeyCombination.CONTROL_DOWN).match(event)) {
                     System.out.println("click ctrl + d");
                     try {
-                        createStage("/View/InmatePage.fxml");
+                        createStage("/lk/ijse/View/InmatePage.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -285,7 +285,7 @@ public class OfficerPageController extends MainDashBoard implements Initializabl
 
     public void searchIdField(ActionEvent actionEvent) throws IOException {
         id = searchId.getText().split(" ")[0];
-        createStage("/View/OfficerDetails.fxml");
+        createStage("/lk/ijse/View/OfficerProfile.fxml");
     }
 
     public static String getId() {

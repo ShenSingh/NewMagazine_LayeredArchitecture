@@ -46,7 +46,7 @@ public class InmateDAOImpl implements InmateDAO {
 
     @Override
     public boolean update(Inmate dto) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeQuery("UPDATE Inmate SET inmateFirstName=?, inmateLastName=?, inmateDOB=?, inmateNIC=?, gender=?, inmateAddress=?, status=?, inmateImage=? WHERE inmateId=?",
+        return SQLUtil.executeQuery("UPDATE Inmate SET inmateFirstName=?, inmateLastName=?, inmateDOB=?, inmateNIC=?, gender=?, inmateAddress=?, status=? WHERE inmateId=?",
                 dto.getInmateFirstName(),
                 dto.getInmateLastName(),
                 dto.getInmateDOB(),
