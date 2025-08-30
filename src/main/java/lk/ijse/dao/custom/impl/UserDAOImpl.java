@@ -38,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean save(User dto) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeQuery("INSERT INTO User VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+        return SQLUtil.executeQuery("INSERT INTO User VALUES (?,?,?,?,?,?,?,?,?,?)",
                 dto.getUId(),
                 dto.getUName(),
                 dto.getUEmail(),
@@ -108,10 +108,10 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean checkValid(String uId, String password) throws Exception {
-        ResultSet rst = SQLUtil.executeQuery("SELECT uPassword FROM User WHERE uName=?", uId);
+        ResultSet rst = SQLUtil.executeQuery("SELECT uPassword FROM User WHERE uId=?", uId);
 
         if (rst.next()) {
-            return passwordHasher.checkPassword(password, rst.getString(4));
+            return passwordHasher.checkPassword(password, rst.getString(1));
         }
         return false;
     }

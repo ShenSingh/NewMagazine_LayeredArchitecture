@@ -137,7 +137,7 @@ public class WelcomeController implements Initializable {
         String uId = uNameField.getText();
         String uPass = uPassField.getText();
 
-        if(/*userBO.checkValid(uId,uPass)*/ true){
+        if(userBO.checkValid(uId,uPass)){
             FlogUId = uId;
             System.out.println("Login Success");
             Stage stage = (Stage) sAnchor.getScene().getWindow();
@@ -273,11 +273,11 @@ public class WelcomeController implements Initializable {
                     UserDTO user;
 
                     try {
-                        if (userBO.existUser(uId)) {
+                        if (!userBO.existUser(uId)) {
                             String hashPass =  passHash(pass);
                             System.out.println("Hash Pass >> "+hashPass);
 
-                            File file = new File("src/main/resources/images/icon/dashUser.png");
+                            File file = new File("src/main/resources/lk/ijse/images/icon/dashUser.png");
                             byte[] imageData = Util.readImage(file);
 
                             user = new UserDTO(uId,fName,email,hashPass,null,null,null,null,null,imageData);
